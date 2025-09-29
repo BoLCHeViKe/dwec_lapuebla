@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>KC_EJ04</title>
+</head>
+
+<body>
+  <h2>Calcular media de 3 notas</h2>
+
+  <label for="markOne">Nota primer trimestre: </label>
+	<input type="number" name="markOne" id="markOne" min="0.00" max="10.00" step="0.01" required>
+  <p></p>
+  <label for="markTwo">Nota segundo trimestre: </label>
+	<input type="number" name="markTwo" id="markTwo" min="0.00" max="10.00" step="0.01" required>
+  <p></p>
+  <label for="markThree">Nota tercer trimestre: </label>
+	<input type="number" name="markThree" id="markThree" min="0.00" max="10.00" step="0.01" required>
+  <p></p>
+	<button type="button" value="Calcular" onclick="average3marks()">Calcular</button> 
+	<p></p>
+  <p id="average"></p>
+
+</body>
+<script src="funciones.js"></script>
+
+</html>

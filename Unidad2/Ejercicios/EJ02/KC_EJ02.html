@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>KC_EJ02</title>
+</head>
+    			<!-- KC_EJ02
+          Crea un programa que solicite dos números y muestre los resultados de todas sus operaciones aritméticas.  -->
+<body>
+
+  <label for="numberOne">Numero uno: </label>
+	<input type="text" name="numberOne" id="numberOne" required>
+  <p></p>
+  <label for="numberTwo">Numero dos: </label>
+	<input type="text" name="numberTwo" id="numberTwo" required>
+  <p></p>
+	<button type="button" value="Calcular" onclick="fullOperations()">Calcular</button> <!-- Hay varias maneras de hacer esto, via onclick"suma();rest()" o tambien llamando a una función que englobe a las demas-->
+
+  
+	<p>Los resultados son: </p>
+  <p id="resultSum"> </p>
+  <p id="resultRest"> </p>
+  <p id="resultPlus"> </p>
+  <p id="resultDiv"> </p>
+  <p id="resultPot"> </p>
+</body>
+<script src="funciones.js"></script>
+
+</html>
