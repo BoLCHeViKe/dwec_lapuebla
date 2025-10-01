@@ -1,59 +1,24 @@
   		/*
-			KC_EJ11
-      Crear un programa que reciba 3 números e indique cuál es el mayor y el menor.
+			KC_EJ12
+Crear un programa que reciba una letra e indique si es vocal o consonante.
+
   		*/
 
-function mayorMenorArray(){
-  let miArray = new Array();
-    miArray.push(parseInt(document.getElementById("numberOne").value),parseInt(document.getElementById("numberTwo").value),parseInt(document.getElementById("numberThree").value));
-
-    let menor = miArray.sort().shift();
-    let mayor = miArray.sort().pop();
-    showMenorMayor(mayor,menor);
-}
-
-function mayorMenor() {
-    let numberOne =parseInt(document.getElementById("numberOne").value);
-    let numberTwo =parseInt(document.getElementById("numberTwo").value);
-    let numberThree =parseInt(document.getElementById("numberThree").value);
-    let mayor, menor;
-    mayor = calcMayor(numberOne,numberTwo,numberThree);
-    menor = calcMenor(numberOne,numberTwo,numberThree);
-    showMenorMayor(mayor,menor);
-
-}
-function showMenorMayor(mayor, menor) {
-      document.getElementById("mostrarMayorMenor").innerHTML = ` <span style="color: red;">Mayor: ${mayor} 'Menor: ${menor}</span>`;
-  
-}
-
-function calcMayor(num1,num2,num3) {
-      if (num1>=num2) {
-      if (num1>=num3) {
-        return num1;        
-      }else {
-        return num3;
-      }
-    } else {
-      if (num2>=num3) {
-        return num2;   
-      } else {
-        return num3;
-      }
-    }
-}
-function calcMenor(num1,num2,num3) {
-      if (num1<=num2) {
-      if (num1<=num3) {
-        return num1;        
-      }else {
-        return num3;
-      }
-    } else {
-      if (num2<=num3) {
-        return num2;   
-      } else {
-        return num3;
-      }
+function comprobarCaracter(){
+        //DUDA!!!!!, porque con miCaracter. no me salen las propiedades?? Que metodos utilizan () y cuales no?
+        // tengo que forzar un str inicializandolo con ""
+    let char="";
+    char = (document.getElementById("caracterInput").value).toLowerCase();  
+    let tipoChar;  
+    //let patron =  /abc/i;
+    let patron =  new RegExp("[a-z]"); //Creamos patron para separar los caracteres especiales de los que no
+    if (char.length==1&&char.match(patron)) {
+        tipoChar = (char=="a"||char=="e"||char=="i"||char=="o"||char=="u")?"vocal":"consonante";
+        document.getElementById("resultadoCaracter").innerHTML = `El caracter introducido es ${tipoChar}`;     
+    }else if(char.length!=1) {
+        document.getElementById("resultadoCaracter").innerHTML = "Debe de introducir un solo valor";
+ 
+    } else{
+        document.getElementById("resultadoCaracter").innerHTML = "Debe de introducir un caracter válido";
     }
 }

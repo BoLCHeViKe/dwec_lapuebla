@@ -7,20 +7,14 @@
 </head>
 
 <body>
-  <h2>Obtener mayor y menor de 3 numeros</h2>
+  <h2>Identificar vocal o consonante</h2>
 
-  <label for="numberOne">Numero Uno: </label>
-	<input type="number" name="numberOne" id="numberOne" step="1" required>
+  <label for="caracterInput">Caracter letra a comprobar: </label>
+	<input type="text" name="caracterInput" id="caracterInput" required>
   <p></p>
-  <label for="numberTwo">Numero Dos: </label>
-	<input type="number" name="numberTwo" id="numberTwo" step="1" required>
-  <p></p>
-  <label for="numberThree">Numero Tres: </label>
-	<input type="number" name="numberThree" id="numberThree" step="1" required>
-  <p></p>
-	<button type="button" value="Calcular" onclick="mayorMenorArray()">Calcular</button> 
+	<button type="button" value="Calcular" onclick="comprobarCaracter()">Comprobar</button> 
 	<p></p>
-  <p id="mostrarMayorMenor"></p>
+  <p id="resultadoCaracter"></p>
 </body>
 <script src="funciones.js"></script>
 

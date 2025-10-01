@@ -23,7 +23,7 @@ function mayorMenor() {
 
 }
 function showMenorMayor(mayor, menor) {
-      document.getElementById("mostrarMayorMenor").innerHTML = ` <span style="color: red;">Mayor: ${mayor} 'Menor: ${menor}</span>`;
+      document.getElementById("mostrarMayorMenor").innerHTML = ` <span style="color: red;">Mayor: ${mayor}  Menor: ${menor}</span>`;
   
 }
 
