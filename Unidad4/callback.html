@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+</head>
+<body>
+    <p id="demo"></p>
+    
+</body>
+<script>
+    function myCalculatorConsole(num1, num2){
+        let sum =num1+num2;
+        console.log(sum);
+    }
+
+    myCalculatorConsole(2,3);
+    function myCalculatorConsoleDOM(num1, num2){
+        let sum=num1+num2;
+        document.getElementById("demo").innerHTML=sum;
+    }
+        myCalculatorConsoleDOM(4,5);
+
+
+    //ejemlo simple
+function myDisplayerDOM(some) {
+    document.getElementById("demo").innerHTML=some;    
+}
+function myDisplayerConsole(some) {
+    console.log(some);
+    
+}
+
+    function myCalculator(num1,num2, myCallback) {
+        let sum = num1+num2;
+        myCallback(sum);
+        
+    }
+    function showArray(array, callback){
+        for (let i = 0; i < array.length; i++) {
+            callback(array[i]);            
+        }
+    }
+    const array =[1,2,3];
+
+    showArray(array,console.log); //A cada valor, le aplica el metodo
+    
+    //Esto funciona pero no se suele hacer coge el elemento del array y le aplica la funcion por callback, pero no lo veo
+    array.forEach(myDisplayerConsole);
+
+    //funcion anomina con notacion claseica
+    array.forEach(function (element) {
+        console.log(element);
+    });
+
+    //Funcion anonima arrow (el nombre de function anonimo no se pone)
+    array.forEach((element)=> console.log(element));
+
+    //Funcion anonima arrow si tiene mas de una linea es con llave
+    array.forEach((element)=> {
+        console.log(element)
+    });
+
+    //Filter array con funcion anonima pasada por callback
+    const array2 = [1,2,4,5,8,9,3,4,6,8,10];
+
+    const arrayfiltered = array2.filter((element)=> {
+        return element>2;
+    });
+    console.log(arrayfiltered);
+
+
+
+</script>
+</html>
