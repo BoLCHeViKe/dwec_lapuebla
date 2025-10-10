@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks</title>
+</head>
+
+<body>
+    <h1>Ejemplo de callbacks</h1>
+    <p id="demo"></p>
+</body>
+<script>
+    function myCalculatorConsole(num1, num2) {
+        let sum = num1 + num2;
+        console.log(sum);
+    }
+
+    myCalculatorConsole(2,3);
+
+    function myCalculatorDOM(num1, num2) {
+        let sum = num1 + num2;
+        document.getElementById("demo").innerHTML = sum;
+    }
+
+    myCalculatorDOM(4,5);
+
+    // Ejemplo simple
+    function myDisplayerDOM(some) {
+        document.getElementById("demo").innerHTML = some;
+    }
+
+    function myDisplayerConsole(some) {
+        console.log(some);
+    }
+
+    function myCalculator(num1, num2, myCallback) {
+        let sum = num1 + num2;
+        myCallback(sum);
+    }
+
+    myCalculator(5, 5, myDisplayerDOM);
+    myCalculator(3, 4, myDisplayerConsole);
+
+
+    // Ejemplos con Array
+    function showArray(array, callback) {
+        for (let index = 0; index < array.length; index++) {
+            const element = array[index];
+            callback(element);
+        }
+    }
+
+    const array = [1, 2, 3];
+
+    showArray(array, console.log);
+
+
+
+    array.forEach(element => {
+        console.log(element);
+    });
+
+    function showElement(element) {
+        console.log(element);
+    }
+    // Programación funcional
+    array.forEach(showElement);
+
+    // Filter array
+    const array2 = [1, 2, 3, 0, 2, 5, 1, 7];
+
+    const arrayFiltered = array2.filter((element) => {
+        return element > 2;
+    });
+
+    showArray(arrayFiltered, alert);
+
+    // Filter function
+    function filter(array, filterCondition) {
+        const arrayFiltered = [];
+        for (let index = 0; index < array.length; index++) {
+            const element = array[index];
+            if(filterCondition(element)) {
+                arrayFiltered.push(element);
+            }
+        }
+        return arrayFiltered;
+    }
+
+    const arrayFiltered2 = filter(array2, (element) => {
+        return element > 2;
+    });
+
+    showArray(arrayFiltered2, alert);
+
+</script>
+
+</html>

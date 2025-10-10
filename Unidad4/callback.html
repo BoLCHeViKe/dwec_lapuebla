@@ -50,12 +50,12 @@ function myDisplayerConsole(some) {
     //Esto funciona pero no se suele hacer coge el elemento del array y le aplica la funcion por callback, pero no lo veo
     array.forEach(myDisplayerConsole);
 
-    //funcion anomina con notacion claseica
+    //funcion anomina con notacion clasica
     array.forEach(function (element) {
         console.log(element);
     });
 
-    //Funcion anonima arrow (el nombre de function anonimo no se pone)
+    //Funcion anonima arrow (el nombre de function anonimo no se pone) Metodo + utilizado
     array.forEach((element)=> console.log(element));
 
     //Funcion anonima arrow si tiene mas de una linea es con llave
@@ -64,14 +64,36 @@ function myDisplayerConsole(some) {
     });
 
     //Filter array con funcion anonima pasada por callback
-    const array2 = [1,2,4,5,8,9,3,4,6,8,10];
+    const array2 = [1,2,4,5,8,9,3,4,6,8,12,10,8,9];
 
     const arrayfiltered = array2.filter((element)=> {
         return element>2;
     });
     console.log(arrayfiltered);
 
+    
+    //findIndex
+    //En anotacion funcional
+    function findIndex(array, callback) {
+        for (let i = 0; i < array.length; i++) {
+            const element = array[i];
+            if (callback(element)) {
+                return i;  
+            }; 
+        } 
+        return -1;       
+    };
 
+    let index7 = findIndex(array2, function(numero){
+        return numero===7;
+
+    });
+    console.log(`Elemento 7 enontrado en posición ${index7}`);
+
+    let index10 = findIndex(array2, (element) => element===10);
+    console.log(`Elemento 10 enontrado en posición ${index10}`);
+
+    // array.findIndex();
 
 </script>
 </html>
