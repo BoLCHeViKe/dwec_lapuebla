@@ -7,7 +7,8 @@
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 </head>
 <body>
-    <p id="demo"></p>
+    <p id="demo">DEMO 1</p>
+    <p id="demo2">DEMO 2</p>
     
 </body>
 <script>
@@ -21,7 +22,8 @@
         let sum=num1+num2;
         document.getElementById("demo").innerHTML=sum;
     }
-        myCalculatorConsoleDOM(4,5);
+
+        // myCalculatorConsoleDOM(4,5);
 
 
     //ejemlo simple
@@ -94,6 +96,37 @@ function myDisplayerConsole(some) {
     console.log(`Elemento 10 enontrado en posición ${index10}`);
 
     // array.findIndex();
+
+//Vamos a hacer una función que muestre los elementos en una unordered list
+//Despues otra función que reciba por agumento array y una callback para aplicar cada elemento
+//finalmente, mostramos
+function showInHtml(some,id){
+    document.getElementById(`${id}`).innerHTML+=some;
+};
+
+/**
+ * Mostrar un array en un html.
+ * @param {array} num1 The first number to add.
+ * @param {id} el id del elemento de HTML donde queremos mostrar la lista.
+ * @param {callback} function for callback.
+ */
+function showArrayUn(array,id,callback){  
+    let str=""; //Solucion B 
+    array.forEach((element,index) => { //Podemos editar el forEach añadiendole un nuevo argumento index, 
+        //Solucion A
+        //callback(`${index===0?"<ul>":""}<li>${element}</li>${index===(array.length-1)?"Final":""}`);          
+            //El callback se lo lleva para mostrarlo
+            //Duda, porque me pone automaticamente el </ul> tras la primera itieneracion?
+
+        //SOlucion B: lo acumulo en STRING y luego lo paso todo:
+        str+=`${index===0?"<ol>":""}<li>${element}</li>${index===(array.length-1)?"</ol>":""}`;
+            
+    });
+    callback(str,id);
+};
+
+//llamamos a nuestras funciones
+showArrayUn(array2,"demo2",showInHtml); //Pa
 
 </script>
 </html>
