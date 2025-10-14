@@ -128,5 +128,47 @@ generarLista(verduras, "demo", callbackElemento);
  * Almacena el resultado en una variable llamada indiceSuspenso.
  * 4. Imprime ambos resultados (notasAprobadas e indiceSuspenso) en la consola.
  */
+const arrayNotas = [7.5, 9.2, 5.0, 8.8, 6.4, 4.9, 9.8, 7.0]
 
-//Recordar a gemini
+const notasAprobadas =arrayNotas.filter(function (element) { //FILTER utiliza true o false
+    return element>=7.0; 
+});
+let indiceSuspenso = arrayNotas.findIndex((element)=> element<5.0);
+
+console.log(notasAprobadas);
+console.log(indiceSuspenso);
+
+/*
+|---------------------------------------------------------|
+|                EJERCICIO 4: Uso de la Función .map()
+| Enfoque: Aplicar el método de array integrado .map() usando una función flecha 
+|          para transformar los datos de cada elemento (precios).
+|---------------------------------------------------------|
+*/
+
+/**
+ * El Escenario: Tienes un array de precios en USD. Necesitas transformarlos para 
+ * crear un nuevo array que contenga los precios finales en EUR, incluyendo un impuesto.
+ * * * Datos a utilizar:
+ * - IVA Europeo: 21% (Multiplicar por 1.21)
+ * - Tipo de Cambio Estático: 1 USD = 0.93 EUR
+ * * * 1. Dado el array de precios inicial:
+ */
+const preciosUSD = [15.50, 49.99, 120.00, 7.25, 30.00];
+
+/**
+ * 2. Utiliza el método .map() con una FUNCIÓN FLECHA para crear un nuevo array 
+ * llamado preciosEUR_ConIVA.
+ * * * 3. Dentro de la función de mapeo, debes realizar los siguientes pasos en orden:
+ * a. Aplicar el IVA del 21% al precio en USD.
+ * b. Convertir el resultado a EUR usando el Tipo de Cambio (multiplicar por 0.93).
+ * c. Redondear el precio final a DOS DECIMALES (usando el método .toFixed(2)).
+ * * * 4. Imprime el array original (preciosUSD) y el array transformado (preciosEUR_ConIVA) 
+ * en la consola.
+ */
+
+const ratioEurDollars=0.93
+const Iva=0.21
+const preciosEUR_ConIVA = preciosUSD.map((element)=>(element*ratioEurDollars*(1+Iva)).toFixed(2));
+console.log(preciosUSD);
+console.log(preciosEUR_ConIVA);
