@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+</head>
+<body>
+<script>
+
+    //Algo así será como en el examen
+
+//1. Array de 5 productos
+const productos = [];
+
+for (let i = 0; i < 6; i++) {
+    productos.push({id:+i,
+                    nombre: `articulo ${i}`,
+                    categoria: `categoria ${i*10}`,
+                    precio: (Math.random(5,98)*10000/100).toFixed(2)
+                });
+    ;
+}
+console.log(productos);
+
+//2. Devuelve los productos que incluyan una palabra dada (promt)
+
+let nombreUser = prompt ("Introduzca nombre del articulo: ");
+const productosFiltNombre = productos.filter((element) => element.nombre.includes(nombreUser));
+console.log(productosFiltNombre);
+
+//3. Devuelve los productos de una categoria dada (promt), si no hay productos poner un mensaje
+let categoriaUser = prompt ("Introduzca una categoria: ");
+const productosFiltCat = productos.filter((element) => element.categoria==categoriaUser);
+console.log(productosFiltCat.length>0?productosFiltCat:`No hemos encontrado ninguna categoria asi`);
+
+//4. Encuentra un producto dado su id
+let idUser = prompt ("Introduzca un id para buscar producto: ");
+
+const productoFind = productos.find((item) => item.id==idUser);
+console.log(productoFind);
+
+//5. Devuelve los 3 productos mas caros
+
+productos.sort((a,b) => b.precio-a.precio);
+const productos3caros = productos.splice(0,3);
+
+console.log(productos3caros);
+
+//6. Actualiza un producto dado su id y el resto de datos (nombre, categoria y precio)
+const productosUnidos = productos.concat(productos3caros); //Volvemos a unir porque el splice los ha sacado del array original
+
+let actualizaId = prompt ("Introduzca el id del producto que quieres actualizar : ");
+    //Dos maneras de hacerlo:
+    //1. busco el objeto con find(), compruebo con if si es undefined, si no lo es, pregunto por definir el objeto y lo defino
+    //2. findIndex(), si el index es -1 muestro el mensaje, si no lo es, pregunto por definir el objeto y defino
+let indiceArt = productosUnidos.findIndex((item)=> item.id==actualizaId); 
+if (indiceArt!=-1) {
+    productosUnidos[indiceArt].nombre = prompt ("Nuevo nombre: ");
+    productosUnidos[indiceArt].categoria = prompt ("Nueva Categoria: ");
+    productosUnidos[indiceArt].precio = prompt ("Nuevo Precio: ");    
+} else {
+    console.log("No se encontró el id dado");    
+};
+
+</script>
+</body>
+</html>

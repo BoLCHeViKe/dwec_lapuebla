@@ -20,15 +20,24 @@
         constructor(first, last, age, eyecolor) {
             this.firstName = first;
             this.lastName = last;
-            this.age = age;
+            this._age = age;
             this.eyeColor = eyecolor;
         }
 
         name() {
             return this.firstName + " " + this.lastName;
         }
+        //Setter
+        set age(age) {
+            if (age<1 || age >= 120) {
+                throw new Error ("Edad incorrecta"); //Si tira excepción para el codigo    
+            }
+            this._age = age; //Aqui solo entra si no ha tirado excepcion, es decir que ha superado el if
+            
+        };
 
-        cocinar() {
+        // getters
+        get cocinar() {
             console.log(`La persona ${this.name()} cocina`)
         }
 

@@ -172,3 +172,15 @@ const Iva=0.21
 const preciosEUR_ConIVA = preciosUSD.map((element)=>(element*ratioEurDollars*(1+Iva)).toFixed(2));
 console.log(preciosUSD);
 console.log(preciosEUR_ConIVA);
+
+//Cómo utilizar map() sobre un arreglo de objetos
+
+let users = [
+  {firstName : "Susan", lastName: "Steward"},
+  {firstName : "Daniel", lastName: "Longbottom"},
+  {firstName : "Jacob", lastName: "Black"}
+];
+
+//Utiliza map() para unir nombre y apellidos
+let completeUsers = users.map((element)=>`${element.firstName} ${element.lastName}` );
+console.log(completeUsers);

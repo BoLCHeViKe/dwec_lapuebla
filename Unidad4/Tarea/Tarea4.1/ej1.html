@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //Antes de comenzar la practica, debido a las indicaciones de nuestro profesor y con intención de poder mostrar nuestros arrays en la consola en sus estados temporales y no en su estado final, hemos creado esta arrow function para que nos facilite el trabajo y su evaluación.
+    mostrarArray = (array) => console.log(array.join(", "));
+//Enunciado A)
+//Para practicar con los métodos, pop(), shift() y slice(), crea un array llamado paises = [“Méjico”, “España”, “Argentina”, “Chile”, “Colombia”, “Venezuela”, “Perú”, “Costa Rica”], usa estos métodos y explica lo que hacen.
+const paises = ["Méjico", "España", "Argentina", "Chile", "Colombia", "Venezuela", "Perú", "Costa Rica"] ;
+mostrarArray(paises);
+
+//Metodo pop(): Elimina el ultimo elemento del array (permite guardarlo en una variable si nos interesase)
+let lastPaisDescartado = paises.pop();
+console.log(`Hemos descartado el ultimo pais ${lastPaisDescartado} con el metodo pop`);
+mostrarArray(paises);
+//Metodo shift(): Elimina el primer elemento del array
+let firstPaisDescartado = paises.shift();
+console.log(`Hemos descartado el primer pais ${firstPaisDescartado} con el metodo shift`);
+mostrarArray(paises);
+//Metodo slice(): copia a un nuevo array desde un array dado, desde una posicion hasta otra
+const paisesDescSlice = paises.slice(2,4);
+mostrarArray(paisesDescSlice);
+
+//Enunciado B)
+//Crea un array llamado comunidades = ["Andalucía", "Aragón", "Canarias", "Cantabria", "Castilla y León"]; y compara los métodos push(), unshift() y splice() para insertar elementos en un array, y explica lo que hacen. 
+const comunidades = ["Andalucía", "Aragón", "Canarias", "Cantabria", "Castilla y León"];
+
+//Metodo push() añade al final del array
+comunidades.push("Pais Vasco");
+mostrarArray(comunidades);
+//unshift() añade al principio del array
+comunidades.unshift("Extremadura");
+mostrarArray(comunidades);
+//Metodo splice(): copia en un nuevo array eliminando desde una posicion dada, una cantidad dada
+comunidades.splice(2,3); //En este ejemplo, quitamos desde la posicion 2, 3 elementos (es decir, quitariamos el elemento con index 2, index 3 e index 4) 
+mostrarArray(comunidades);
+
+//Enunciado C)
+//En el array creado en el apartado a, muestra su contenido por pantalla, después utiliza el método adecuado para ordenarlo y vuelve a mostrar su contenido. 
+paises.sort(); //Ordenamos de A a la Z
+mostrarArray(paises);
+
+//Enunciado D)
+//Utilizando el array ordenado del punto anterior, define una variable llamada corte=país.slice(1, 4) y muestra el resultado del nuevo array. 
+const corte = paises.slice(1,4); //Creamos un array nuevo con los elementos index 1,2,3 del anterior array dado (paises)
+mostrarArray(corte);
+
+</script>
+</html>
