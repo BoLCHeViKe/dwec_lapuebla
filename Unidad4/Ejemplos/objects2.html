@@ -23,9 +23,19 @@
         }
     }
 
+    // Deep copy
     // JSON.stringify y JSON.parse
-    console.log(JSON.stringify(person));
-
+    // Stringify no copia método o funciones contenidas
+    const person2String = JSON.stringify(person);
+    console.log(person2String);
+    // Nuevo objeto creado a partir del string
+    try {
+        console.log(JSON.parse(person2String + ","));
+    } catch (error) {
+        // Dara error si el json no es correcto
+        console.log(error);
+    }
+    
     const alumnos = [
         {
             firstName: "John",
@@ -44,7 +54,7 @@
     console.log(alumnos);
 
     // Proceso para hacer un copia profunda (deep copy). !!! OJO !! Sólo es válido si el array está compuesto por objetos literales o simples
-    let alumnosString = JSON.stringify(alumnos)
+    let alumnosString = JSON.stringify(alumnos);
     console.log(alumnosString);
 
     let alumnosDeepCopy;
@@ -78,10 +88,12 @@
     const myFather = new Person("John", "Doe", 50, "blue");
     const myMother = new Person("Sally", "Rally", 48, "green");
 
+    console.log(myFather.name());
+
     console.log(myFather);
     console.log(myMother);
 
-    myMother.cocinar();
+    myFather.cocinar();
 </script>
 
 </html>

@@ -20,31 +20,37 @@
         constructor(first, last, age, eyecolor) {
             this.firstName = first;
             this.lastName = last;
-            this._age = age;
+            this.age = age;
             this.eyeColor = eyecolor;
         }
 
-        name() {
+        // Setter
+        set age(age) {
+            if(age < 1 || age >= 120)
+                throw new Error("Edad incorrecta");
+
+            this._age = age;
+        }
+
+        // Getter
+        get name() {
             return this.firstName + " " + this.lastName;
         }
-        //Setter
-        set age(age) {
-            if (age<1 || age >= 120) {
-                throw new Error ("Edad incorrecta"); //Si tira excepción para el codigo    
-            }
-            this._age = age; //Aqui solo entra si no ha tirado excepcion, es decir que ha superado el if
-            
-        };
 
-        // getters
-        get cocinar() {
-            console.log(`La persona ${this.name()} cocina`)
+        cocinar() {
+            console.log(`La persona ${this.name} cocina`)
         }
 
     }
 
     const myFather = new Person("John", "Doe", 50, "blue");
     const myMother = new Person("Sally", "Rally", 48, "green");
+
+    try {
+        myFather.age = -1;
+    } catch (error) {
+        console.log(error);
+    }    
 
     console.log(myFather);
     console.log(myMother);
@@ -59,7 +65,7 @@
         }
 
         sueldo() {
-            console.log(`La persona ${this.name()} tiene sueldo ${this.salary}`)
+            console.log(`La persona ${this.name} tiene sueldo ${this.salary}`)
         }
 
     }

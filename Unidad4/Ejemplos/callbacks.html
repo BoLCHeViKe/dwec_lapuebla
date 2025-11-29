@@ -56,17 +56,16 @@
 
     showArray(array, console.log);
 
+    // Esto funciona pero no se suele hacer
+    array.forEach(myDisplayerConsole);
 
-
-    array.forEach(element => {
+    // Función anónima con notación clásica
+    array.forEach(function (element) {
         console.log(element);
     });
 
-    function showElement(element) {
-        console.log(element);
-    }
-    // Programación funcional
-    array.forEach(showElement);
+    // Función anónima arrow
+    array.forEach((element) => console.log(element));
 
     // Filter array
     const array2 = [1, 2, 3, 0, 2, 5, 1, 7];
@@ -75,7 +74,7 @@
         return element > 2;
     });
 
-    showArray(arrayFiltered, alert);
+    console.log(arrayFiltered);
 
     // Filter function
     function filter(array, filterCondition) {
@@ -93,8 +92,24 @@
         return element > 2;
     });
 
-    showArray(arrayFiltered2, alert);
+    showArray(arrayFiltered2, console.log);
 
+    // FindIndex
+    function findIndex(array, callback) {
+        for (let index = 0; index < array.length; index++) {
+            const element = array[index];
+            if(callback(element)) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    let index7 = findIndex(array2, element => element === 7);
+    console.log(`Elemento 7 encontrado en posicion ${index7}`);
+
+    let index10 = findIndex(array2, element => element === 10);
+    console.log(`Elemento 10 encontrado en posicion ${index10}`);
 </script>
 
 </html>

@@ -153,3 +153,5 @@ console.log(upperNames);
 // });
 // console.log("Resultado 9 (map - Nombres capitalizados):", /* Imprime el nuevo array */);
 
+let dni = prompt("Introduce dni");
+console.log(dni);

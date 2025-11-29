@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Validación con HTML5</title>
+    <meta name="author" content="Ángel Berasuainr" />
+</head>
+
+<body>
+    <h1>Validar con Eventos y Expresiones Regulares</h1>
+    <div>
+        <form id="miFormulario">
+            <legend>Introduce los datos y pulsa Comprobar</legend>
+            <br /><br />
+
+            <label for="dni">DNI:</label>
+            <input id="dni" type="text" name="dni" placeholder="00.000.000-A" title="Esto no parece un DNI válido"
+                onBlur="checkRequired(this)" pattern="^[0-9]{2}\.[0-9]{3}\.[0-9]{3}-[A-Za-z]$" />
+
+            <br /><br />
+
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" type="text" name="nombre" size="50" onBlur="checkRequired(this)" />
+
+            <br /><br />
+
+            <label for="fecha">Fecha de Nacimiento:</label>
+            <input id="fecha" type="date" name="fecha" onBlur="checkRequired(this)" />
+
+            <br /><br />
+
+            <label for="email">Email:</label>
+            <input id="email" type="text" name="text" size="40" placeholder="ejemplo@hola.com"
+                onBlur="checkRequired(this)" pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{3}" />
+
+            <br /><br />
+
+            <label for="sitioweb">Página WEB:</label>
+            <input id="sitioweb" type="text" name="sitioweb" placeholder="https://www.ejemplo.com"
+                title="No coincide con el formato" onBlur="checkRequired(this)"
+                pattern="http[s]?:\\\\www\\.[a-zA-Z0-9]+\.[a-zA-Z]{3}" />
+
+            <br /><br />
+
+            <label for="passwd">Contraseña:</label>
+            <input id="passwd" type="password" name="passwd" placeholder="De 8 a 10 caracteres"
+                tittle="Introduce una contraseña de entre 8 y 10 caracteres" onBlur="checkRequired(this)" />
+            <p id="error-passwd"></p>
+            <label for="passwd2">Repetir contraseña:</label>
+            <input id="passwd2" type="password" name="passwd2" placeholder="De 8 a 10 caracteres"
+                tittle="Introduce una contraseña de entre 8 y 10 caracteres" onBlur="checkRequired(this)" />
+            <br /><br />
+
+            <button type="submit">Comprobar</button>
+        </form>
+    </div>
+
+    <br /><br />
+    <div id="error"></div>
+
+    <script type="text/javascript">
+        //1.	Poner el foco en el primer campo (dni) con eventos.
+        const miFormulario = document.querySelector('#miFormulario');
+        const dni = document.querySelector('#dni');
+        dni.focus();
+        const nombre = document.querySelector('#nombre');
+        const fecha = document.querySelector('#fecha');
+        const email = document.querySelector('#email');
+        const sitioweb = document.querySelector('#sitioweb');
+        const passwd = document.querySelector('#passwd');
+        const passwd2 = document.querySelector('#passwd2');
+
+        //2.	Todos los campos son obligatorios y para validar esto, lo hacemos cuando el campo pierda el foco, y usando “checkRequired(this)” de forma inline. 
+
+        //**********FUNCIONES DE COMPROBACION***************** 
+        function checkRequired(objeto) {
+            if (objeto.value.trim() === "") {
+                objeto.style.border = "2px solid red";
+                return false;
+            } else {
+                objeto.style = "none";
+                return true;
+            }
+
+        }
+        function checkName(objeto) {
+            if (!objeto.value.trim() || objeto.value.length > 50) {
+                return false;
+            }
+            return true;
+        }
+        function checkDate(objeto) {
+            if (/^[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}$/.test(objeto.value)) { //¿Hace falta ser exhaustivo con la RegEx comprobando la lógica (días maximos del mes 31,30, 29 (bisiesto) o 28, meses 12 max y años etc o solo el formato?
+                return false;
+            }
+            return true;
+        }
+        function checkPass(objeto) {
+            if (objeto.value.length < 8 || objeto.value.length > 10) {//No es necesario que hagamos la comprobación de obligatorio, ya que al contemplar que si tiene menos de 8 caracteres es falso, y si tuviese objeto.value.trim()==="" sería 0 el length
+                return false;
+            }
+            return true;
+        }
+        function checkSamePass(objeto, objeto2) {
+            const error = document.querySelector('#error-passwd');
+            if (!objeto.value.trim()) {
+                error.style.color = "red";
+                error.innerHTML = "¡La contraseña introducida no puede estar vacia!";
+                return false;
+            }else if (objeto.value !== objeto2.value) {
+                error.style.color = "red";
+                error.innerHTML = "¡Las contraseñas introducidas no coinciden!";
+                return false;
+            }
+            error.style.color = "green";
+            error.innerHTML = "¡Coinciden!";
+            return true;
+        }
+
+
+        //************EVENTOS*****************
+        passwd.addEventListener('blur', function () {
+            checkSamePass(this, passwd2);
+        });
+        passwd2.addEventListener('blur', function () {
+            checkSamePass(passwd, this);
+        });
+
+
+        miFormulario.addEventListener('submit', function (event) {
+            event.preventDefault();
+            if (checkName(nombre) && checkDate(fecha) && checkPass(passwd) && checkPass(passwd2) && checkSamePass(passwd, passwd2)) {
+                alert("Formulario correcto");
+                //Hacemos gestiones para formulario valido
+                    //window.location = this.action; //Para reanudar el rediccionamiento a la web de <form action="">
+                    //O podemos declarar valido=true y crear un objeto literal etc... 
+                    //
+
+            } else {
+                alert("Formulario incorrecto");
+            }
+        })
+
+        //¿Con las implementaciones realizadas en este ejercicio puede quedarse algún campo sin validar correctamente? Justifica tu respuesta.
+        //Claro, hay valores que no se han comprobado al realizar el submit bajo JS y utilizando el modelo de registro avanzado (recomendado por la W3C), como lo puede ser el campo email y sitioweb, puesto que la validación por html como añadiendo el atrituto "required" o el pattern="" es facilmente deshabilitable e inseguro... por lo que se recomienda encarecidamente utilizar el modelo ya descrito bajo JS. Como extra, podríamos arrojar información extra creando contenedores de error sobre los campos que no han sido cumplimentados, no solo señalarlos de rojo. 
+
+
+    </script>
+</body>
+
+</html>

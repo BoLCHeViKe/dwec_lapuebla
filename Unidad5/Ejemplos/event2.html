@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>Eventos</title>
+</head>
+
+<body>
+    <h1 id="title">Eventos</h1>
+    <form id="formulario">
+        <p>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" value=""/>
+            <div id="error-nombre"></div>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" id="apellidos" value="Veiga Perez" />
+            <div id="error-apellidos"></div>
+            <input id="submit" type="submit" value="Enviar">
+        </p>
+        Haga click en cada uno de los campos para ver más información.
+    </form>
+</body>
+
+<script type="text/javascript">
+
+    // Elementos del DOM
+    const title = document.querySelector("#title");
+    const nombre = document.querySelector('#nombre');
+    const apellidos = document.querySelector('#apellidos');
+    //Elemento señalado primero (siempre que value este vacio)
+    nombre.focus();
+    // Evento REGISTRO AVANZADO para hacer toggle del color del título
+    title.addEventListener('click',function (){
+        if (this.style.backgroundColor==="") {
+        this.style.backgroundColor = "black";
+        this.style.color="white"; 
+        } else {
+        this.style.backgroundColor="";
+        this.style.color="";
+        }
+    },true);
+    // Evento MODELO EN LINEA que comprueba nombre relleno
+
+    function checkRequired(objeto) { //Y asi reutilizamos la función de validación
+    const error = document.querySelector('#error-'+objeto.id);
+        if (!objeto.value.trim()) {
+            objeto.style.border = "2px solid red";
+            error.innerHTML = `Debe completar el ${objeto.name}`;
+            //objeto.focus(); //Si quieroo que el primero que de error, se pued
+            return false; //No pasa la validacion 
+        } else{
+            objeto.style="none"; //Para resetear estilo!!!!
+            error.innerHTML="";
+            return true; //Pasa validacion
+        }        
+    }
+
+    // ¿Cómo procesamos el formulario?
+    const formulario = document.querySelector("#formulario");
+    // A FUEGO :)
+    formulario.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        //Comprobamos que todos los values esten completos (value!=="" no vacios via array???) y si todo esta relleno, ok!!
+        //0.1.Hacer un array con valores formulario const inputsArray = [nombre, apellidos];
+        //0.2. Hacer un array buscando los elementos input type="text"
+
+
+        //console.log(inputTextArray.length);
+
+        // function compEmptyValues(tipoEtiqueda) {
+        //     const inputTextArray = document.getElementsByTagName(tipoEtiqueda);
+        //     console.log(inputTextArray);
+        //     debugger;
+        //     for (let i = 0; i < inputTextArray.length; i++) {
+        //         if (inputTextArray[i].value.trim()===""){
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
+        //     const inputTextArray = document.getElementsByTagName('input');
+        // const inputTextFilter =inputTextArray.filter((element) => {return element.value.trim()===""});
+        // console.log(inputTextFilter);
+        //Y comprobar si .lenght es mayor que 0
+// inputTextArray.filter is not a function
+//     at HTMLFormElement.<anonymous>
+
+
+
+        // 1) Procesar errores
+        
+        let valido = true;
+    //1. A. UN TIPO DE VALIDACION
+        for (let i = 0; i < formulario.elements.length; i++) {
+            if (formulario.elements[i].type==="text" && !checkRequired(formulario.elements[i])) {
+                valido=false;
+            }
+        }
+       
+        if (!valido) {
+            alert("Algun valor vacio");
+        } else{
+            console.log("No hay valores vacios");
+        }
+
+        //2. B. OTRO TIPO DE VALIDACION
+        if (checkRequired(nombre) && checkRequired(apellidos)) { //Esta es mejor manera si tengo varios elementos de diferentes tipos - EVALUACION POR CORTOCIRCUITO
+            valido = true;
+
+        } else{
+            alert("Algun valor vacio");
+            valido = false;
+        }
+
+
+        // 2) Si todo va ok, empaquetar los resultados en JSON
+        if (valido) {
+            const json = {
+                nombre: nombre.value,
+                apellidos: apellidos.value
+            }
+            console.log(json);
+        }
+    });
+
+    // 2) Si todo va ok, empaquetar los resultados en JSON
+
+
+</script>
+
+</html>

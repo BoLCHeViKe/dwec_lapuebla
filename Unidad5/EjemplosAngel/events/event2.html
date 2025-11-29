@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>Eventos</title>
+</head>
+
+<body>
+    <h1 id="title">Eventos</h1>
+    <form id="formulario">
+        <p>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" value="" onblur="checkRequired(this)" />
+            <div id="error-nombre"></div>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" id="apellidos" value="Veiga Perez" />
+            <input id="submit" type="submit" value="Enviar">
+        </p>
+        Haga click en cada uno de los campos para ver más información.
+    </form>
+</body>
+
+<script type="text/javascript">
+    function checkRequired(objeto) {
+        const error = document.querySelector('#error-'+objeto.id);
+        // Para quitar los espacios
+        if(!objeto.value.trim()) {
+            objeto.style = "border: 2px solid red";            
+            error.innerHTML = "El campo es obligatorio";
+        } else {
+            objeto.style = "";
+            error.innerHTML = "";
+        }
+    }
+    // Poner foco en el campo nombre
+    // Elementos del DOM
+    const nombre = document.querySelector('#nombre');
+    const apellidos = document.querySelector('#apellidos');
+    nombre.focus();
+
+    // Evento para hacer toggle del color del título
+    const title = document.querySelector("#title");
+    title.addEventListener('click', function () {
+        if (this.style.backgroundColor !== 'black') {
+            this.style.backgroundColor = 'black';
+            this.style.color = "white";
+        } else {
+            this.style.backgroundColor = 'white';
+            this.style.color = "black";
+        }
+    });
+
+    // ¿Cómo procesamos el formulario?
+    const formulario = document.querySelector("#formulario");
+    // A FUEGO :)
+    formulario.addEventListener('submit', function (event) {
+        event.preventDefault();        
+        // 1) Procesar errores
+        let valido = true;
+        // ¿Podemos unificar esta validación con la de inline?
+        if(!nombre.value.trim()) {
+            valido = false;
+        }
+        // 2) Si todo va ok, empaquetar los resultados en JSON
+        if (valido) {
+            const json = {
+                nombre: nombre.value,
+                apellidos: apellidos.value
+            }
+            console.log(json);
+        } else {
+            alert('Formulario inválido');
+        }
+    });
+
+    // Esto no, caca
+    /*
+    const submit = document.querySelector("#submit");
+    formulario.addEventListener('click', function () {
+        
+    });
+    */
+</script>
+
+</html>

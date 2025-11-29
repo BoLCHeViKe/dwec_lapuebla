@@ -33,13 +33,13 @@
     console.log(array1);
     console.log(array2);
 
-    // Objetos
+    // Objetos Literal
     const person = {
         firstName: "John",
         lastName: "Doe",
         age: 50, 
         eyeColor: "blue",
-        show: function (params) {
+        show: function () {
             console.log(`${this.firstName} y edad ${this.age}`);
         }
     }
@@ -52,6 +52,7 @@
     console.log(x['firstName']);
 
     for (const key in person) {
+        // Es equivalente a person.hasOwnProperty(key)
         if (Object.hasOwnProperty.call(person, key)) {
             const value = person[key];
             console.log(`${key} = ${value}`);
