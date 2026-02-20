@@ -17,6 +17,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/08-watchers">8. Watchers</RouterLink>
         <RouterLink to="/09-ciclovida">9. Ciclo de Vida</RouterLink>
         <RouterLink to="/10-comunicacion">10. Comunicación</RouterLink>
+        <RouterLink to="/11-myList">11. Mi Lista</RouterLink>
       </nav>
     </header>
     <main>

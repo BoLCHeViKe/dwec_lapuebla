@@ -1,6 +1,6 @@
 <script setup>
 import { ref, reactive } from 'vue'
-const contador = ref(0)
+const contador = ref(0);
 const usuario = reactive({ nombre: 'Alumno', edad: 20 })
 
 function incrementarEdad(){
