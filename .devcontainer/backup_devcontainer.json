@@ -36,11 +36,26 @@
             "strings": "#a3d4ab",
             "variables": "#9cc4e9",
             "textMateRules": [
-              { "scope": ["keyword.operator"], "settings": { "foreground": "#56fadf", "fontStyle": "bold" } },
-              { "scope": ["keyword.control", "storage.type"], "settings": { "foreground": "#f5a0f8" } },
-              { "scope": ["keyword.operator.logical.python"], "settings": { "foreground": "#d391c5" } },
-              { "scope": ["constant.language"], "settings": { "foreground": "#f5ad41" } },
-              { "scope": ["variable.parameter.function.language.special"], "settings": { "foreground": "#6bc9b7" } }
+              {
+                "scope": ["keyword.operator"],
+                "settings": { "foreground": "#56fadf", "fontStyle": "bold" }
+              },
+              {
+                "scope": ["keyword.control", "storage.type"],
+                "settings": { "foreground": "#f5a0f8" }
+              },
+              {
+                "scope": ["keyword.operator.logical.python"],
+                "settings": { "foreground": "#d391c5" }
+              },
+              {
+                "scope": ["constant.language"],
+                "settings": { "foreground": "#f5ad41" }
+              },
+              {
+                "scope": ["variable.parameter.function.language.special"],
+                "settings": { "foreground": "#6bc9b7" }
+              }
             ]
           }
         },
@@ -55,9 +70,6 @@
       }
     }
   },
-  "forwardPorts": [5173, 8080, 5500],
-  "postCreateCommand": "npm install"
-}
   "forwardPorts": [5173, 8080, 5500],
   "postCreateCommand": "npm install"
 }
