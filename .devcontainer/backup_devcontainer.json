@@ -2,7 +2,7 @@
   "name": "Vue Dev Custom",
   "image": "mcr.microsoft.com/devcontainers/base:alpine",
   "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {//Librerias necesarias para posterior instalacion
+    "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": true,
       "configureZshAsDefaultShell": true
     },
