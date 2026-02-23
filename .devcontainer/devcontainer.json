@@ -1,6 +1,11 @@
 {
   "name": "Vue Dev Custom",
   "image": "mcr.microsoft.com/devcontainers/base:alpine",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
