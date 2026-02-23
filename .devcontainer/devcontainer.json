@@ -8,18 +8,17 @@
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "ritwickdey.LiveServer",
-        "PKief.material-icon-theme", // Necesaria para tus iconos
-        "johnpapa.vscode-peacock",   // Necesaria para tus colores Peacock
-        "formulahendry.code-runner"  // Necesaria para tus ajustes de Code Runner
+        "PKief.material-icon-theme",
+        "johnpapa.vscode-peacock",
+        "formulahendry.code-runner"
       ],
       "settings": {
-        // --- TUS AJUSTES COPIADOS ---
+        "editor.wordWrap": "on",
+        "workbench.secondarySideBar.defaultVisibility": "hidden",
         "code-runner.runInTerminal": true,
         "code-runner.saveFileBeforeRun": true,
         "workbench.colorTheme": "Default Dark+",
         "workbench.iconTheme": "material-icon-theme",
-        "editor.wordWrap": "on",
-        "workbench.secondarySideBar.defaultVisibility": "hidden",
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "workbench.colorCustomizations": {
@@ -56,6 +55,9 @@
       }
     }
   },
+  "forwardPorts": [5173, 8080, 5500],
+  "postCreateCommand": "npm install"
+}
   "forwardPorts": [5173, 8080, 5500],
   "postCreateCommand": "npm install"
 }
