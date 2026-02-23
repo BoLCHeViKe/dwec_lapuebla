@@ -19,6 +19,7 @@
         "workbench.colorTheme": "Default Dark+",
         "workbench.iconTheme": "material-icon-theme",
         "editor.wordWrap": "on",
+        "workbench.secondarySideBar.defaultVisibility": "hidden",
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "workbench.colorCustomizations": {
