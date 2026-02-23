@@ -11,6 +11,10 @@ function agregarAsig() {
     }
   }
 }
+function deleteElemlist(itemAEliminar) {
+  const index = milista.findIndex((item) => item.toLowerCase() === itemAEliminar.toLowerCase())
+  milista.splice(index, 1)
+}
 const resetList = () => {
   milista.length = 0
 }
@@ -20,9 +24,11 @@ const resetList = () => {
   <input @keyup.enter="agregarAsig()" v-model="asig" type="text" placeholder="Escribe asignatura" />
   <button @click="agregarAsig()">Guardar</button>
   <button @click="resetList">Limpiar Lista</button>
-  <ul>
-    <li v-for="(asignatura, index) in milista" :key="index">{{ index + 1 }} - {{ asignatura }}</li>
-  </ul>
+  <ol>
+    <li v-for="(asignatura, index) in milista" :key="index">
+     {{ asignatura }}<button @click="deleteElemlist(asignatura)">X</button>
+    </li>
+  </ol>
   <!-- mi html -->
   <!-- crear input y luego boton para añadir a la lista -->
 </template>
