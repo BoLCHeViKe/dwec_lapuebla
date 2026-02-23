@@ -1,0 +1,63 @@
+{
+  "name": "Vue Dev Custom",
+  "image": "://mcr.microsoft.com",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ritwickdey.LiveServer",
+        "PKief.material-icon-theme",
+        "johnpapa.vscode-peacock",
+        "formulahendry.code-runner"
+      ],
+      "settings": {
+        "editor.wordWrap": "on",
+        "workbench.secondarySideBar.defaultVisibility": "hidden",
+        "code-runner.runInTerminal": true,
+        "code-runner.saveFileBeforeRun": true,
+        "workbench.colorTheme": "Default Dark+",
+        "workbench.iconTheme": "material-icon-theme",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "workbench.colorCustomizations": {
+          "[Default Dark+]": {
+            "activityBar.foreground": "#9dff00",
+            "tab.activeForeground": "#9bf7b2",
+            "tab.inactiveForeground": "#a1a1a1"
+          }
+        },
+        "editor.tokenColorCustomizations": {
+          "[Default Dark+]": {
+            "comments": "#868686",
+            "numbers": "#fcdb81",
+            "functions": "#eef58c",
+            "strings": "#a3d4ab",
+            "variables": "#9cc4e9",
+            "textMateRules": [
+              { "scope": ["keyword.operator"], "settings": { "foreground": "#56fadf", "fontStyle": "bold" } },
+              { "scope": ["keyword.control", "storage.type"], "settings": { "foreground": "#f5a0f8" } },
+              { "scope": ["keyword.operator.logical.python"], "settings": { "foreground": "#d391c5" } },
+              { "scope": ["constant.language"], "settings": { "foreground": "#f5ad41" } },
+              { "scope": ["variable.parameter.function.language.special"], "settings": { "foreground": "#6bc9b7" } }
+            ]
+          }
+        },
+        "peacock.favoriteColors": [
+          { "name": "Vue Green", "value": "#42b883" },
+          { "name": "Azul Clasico", "value": "#27487a" }
+        ],
+        "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+        "[vue]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+        "liveServer.settings.donotShowInfoMsg": true,
+        "update.showReleaseNotes": false
+      }
+    }
+  },
+  "forwardPorts": [5173, 8080, 5500],
+  "postCreateCommand": "npm install"
+}
+  "forwardPorts": [5173, 8080, 5500],
+  "postCreateCommand": "npm install"
+}
