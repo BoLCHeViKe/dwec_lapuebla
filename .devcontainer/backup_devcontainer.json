@@ -1,6 +1,6 @@
 {
   "name": "Vue Dev Custom",
-  "image": "://mcr.microsoft.com",
+  "image": "mcr.microsoft.com/devcontainers/base:alpine",
   "customizations": {
     "vscode": {
       "extensions": [
