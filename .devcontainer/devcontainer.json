@@ -20,7 +20,7 @@
         "code-runner.saveFileBeforeRun": true,
         "workbench.colorTheme": "Default Dark+",
         "workbench.iconTheme": "material-icon-theme",
-        "editor.formatOnSave": true,
+        "editor.formatOnSave": false,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "workbench.colorCustomizations": {
           "[Default Dark+]": {
