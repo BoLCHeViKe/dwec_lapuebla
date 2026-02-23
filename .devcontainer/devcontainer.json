@@ -1,6 +1,6 @@
 {
 	"name": "Node.js",
-	"image": "://mcr.microsoft.com",
+	"image": "mcr.microsoft.com/devcontainers/base:alpine",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {}
 	},
