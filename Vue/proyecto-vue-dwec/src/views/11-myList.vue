@@ -1,11 +1,16 @@
 <script setup>
-import { ref, reactive } from 'vue';
-const asig = ref("");
+import { reactive } from 'vue';
+let asig="";
 const milista = reactive(["Cliente","Servidor"]);
 //Mi script
 function agregarAsig(){
-    milista.push(asig);
-    //Conseguir resetear la variable una vez agreegada
+    if (asig.trim()!="") {
+        if (milista.findIndex((element)=> element.toLowerCase()===asig.toLowerCase())===-1) {
+            milista.push(asig);
+            asig="";        
+        }
+    }
+
 }
 const resetList = () => {
     milista.length = 0; 

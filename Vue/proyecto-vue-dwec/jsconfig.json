@@ -1,8 +1,17 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
     "paths": {
       "@/*": ["./src/*"]
     }
+  },
+  "vueCompilerOptions": {
+    "target": 3
   },
   "exclude": ["node_modules", "dist"]
 }
