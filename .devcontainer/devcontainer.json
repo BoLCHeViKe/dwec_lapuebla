@@ -1,24 +1,20 @@
 {
-  "name": "Vue Dev Clean",
-  "image": "://mcr.microsoft.com",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "Vue.volar",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "PKief.material-icon-theme",
-        "johnpapa.vscode-peacock"
-      ],
-      "settings": {
-        "editor.wordWrap": "on",
-        "workbench.secondarySideBar.defaultVisibility": "hidden",
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "workbench.colorTheme": "Default Dark+"
-      }
-    }
-  },
-  "forwardPorts": [5173, 8080],
-  "postCreateCommand": "npm install"
+	"name": "Node.js",
+	"image": "://mcr.microsoft.com",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"editor.wordWrap": "on",
+				"workbench.secondarySideBar.defaultVisibility": "hidden"
+			},
+			"extensions": [
+				"Vue.volar",
+				"esbenp.prettier-vscode"
+			]
+		}
+	},
+	"postCreateCommand": "npm install"
 }
