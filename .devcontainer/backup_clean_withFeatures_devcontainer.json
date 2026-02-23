@@ -86,5 +86,5 @@
     }
   },
   "forwardPorts": [5173, 8080, 5500],
-  "postCreateCommand": "npm install"
+  "postCreateCommand": "cd Vue/proyecto-vue-dwec && npm install"
 }
