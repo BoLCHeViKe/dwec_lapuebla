@@ -4,6 +4,12 @@
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "20"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
     }
   },
   "customizations": {
@@ -15,7 +21,8 @@
         "ritwickdey.LiveServer",
         "PKief.material-icon-theme",
         "johnpapa.vscode-peacock",
-        "formulahendry.code-runner"
+        "formulahendry.code-runner",
+        "ms-python.python" // He añadido la extensión de Python para que te funcione el resaltado
       ],
       "settings": {
         "editor.wordWrap": "on",
