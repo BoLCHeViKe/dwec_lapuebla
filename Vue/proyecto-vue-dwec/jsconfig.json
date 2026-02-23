@@ -5,10 +5,12 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "jsx": "preserve",
-    "lib": ["esnext", "dom"],
+    "lib": ["esnext", "dom", "dom.iterable"], // <-- Añadido dom.iterable
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "checkJs": true, // <-- Esto fuerza a VS Code a avisarte de errores en JS
+    "allowJs": true
   },
   "vueCompilerOptions": {
     "target": 3
