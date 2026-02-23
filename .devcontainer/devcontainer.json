@@ -52,7 +52,21 @@
         "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
         "[vue]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
         "liveServer.settings.donotShowInfoMsg": true,
-        "update.showReleaseNotes": false
+        "update.showReleaseNotes": false,
+            // Fuerza a VS Code a sugerir cosas de Vue en cuanto escribas @
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "off",
+        "strings": "on"
+    },
+    // Ajustes específicos de Volar (Vue Official)
+    "vue.features.ide.componentEverywhere": true,
+    "vue.inlayHints.missingProps": true,
+    "html.suggest.html5": true,
+    
+    // Asegura que Prettier no se pelee con Vue
+    "prettier.documentSelectors": ["**/*.vue"]
       }
     }
   },
