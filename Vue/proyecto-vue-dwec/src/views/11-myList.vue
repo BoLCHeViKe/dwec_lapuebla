@@ -17,7 +17,7 @@ const resetList = () => {
 </script>
 <template>
   <h2>Mi testeo de lista</h2>
-  <input v-model="asig" type="text" placeholder="Escribe asignatura" />
+  <input @keyup.enter="agregarAsig()" v-model="asig" type="text" placeholder="Escribe asignatura" />
   <button @click="agregarAsig()">Guardar</button>
   <button @click="resetList">Limpiar Lista</button>
   <ul>
