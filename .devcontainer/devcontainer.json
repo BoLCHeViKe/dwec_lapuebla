@@ -1,14 +1,6 @@
 {
   "name": "Vue Dev Custom",
-  "image": "mcr.microsoft.com/devcontainers/base:alpine",
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "20"
-    },
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11"
-    }
-  },
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20-bookworm",
   "customizations": {
     "vscode": {
       "extensions": [
