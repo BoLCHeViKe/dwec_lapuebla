@@ -3,17 +3,17 @@ import { ref,watch } from "vue";
 const saldo = ref(100)
 const resumen = ref("")
 watch(saldo, (nuevo, antiguo)=>{
+    resumen.value=`Antes: ${antiguo}   Ahora: ${nuevo} --->    `
     if (nuevo < 0) {
-        resumen.value = "¡Error! No puedes tener saldo negativo."        
+        resumen.value += "¡Error! No puedes tener saldo negativo."        
     } else if (nuevo<antiguo) {
-        resumen.value = `Has gastado: ${antiguo-nuevo}`
+        resumen.value += `Has gastado: ${antiguo-nuevo}`
     } else if (nuevo>antiguo) {
-        resumen.value = `Has ingresado: ${nuevo-antiguo}`
+        resumen.value += `Has ingresado: ${nuevo-antiguo}`
     }else {
-        resumen.value = "Te has quedado igual!"
+        resumen.value += "Te has quedado igual!"
     }
 }
-
 
 
 )
