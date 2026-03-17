@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario Vanilla Escalable</title>
+</head>
+
+<body>
+  <h1>Alta de alumnos</h1>
+  <form id="formulario">
+    <label>Nombre:<input type="text" id="nombre" /></label>
+    <div id="error-nombre"></div>
+    <label>DNI:<input type="text" id="dni" /></label>
+    <div id="error-dni"></div>
+    <label>Email:<input type="email" id="email" /></label>
+    <div id="error-email"></div>
+    <label>Curso:
+      <select id="curso">
+        <option value="">Seleccione</option>
+        <option value="DAW">DAW</option>
+        <option value="DAM">DAM</option>
+      </select>
+    </label>
+    <div id="error-curso"></div>
+    <label><input type="checkbox" id="mayor" /> Mayor de edad</label>
+    <div id="error-mayor"></div>
+    <button type="submit">Enviar</button>
+    <button type="button" id="cursos" value="cursos">Alumnos por Curso</button>
+    <button type="button" id="estadistica" value="estadistica">Estadísticas</button>
+  </form>
+  <script type="module" src="./js/funciones.js"></script>
+  <script type="module" src="./js/validaciones.js"></script>
+  <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
