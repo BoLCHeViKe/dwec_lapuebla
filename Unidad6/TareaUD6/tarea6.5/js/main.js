@@ -1,5 +1,5 @@
 import { validateField } from './validaciones.js';
-import { getValue } from './funciones.js';
+import { getValue, pressEnterNextField } from './funciones.js';
 import { RegistroUsuarios } from './Usuarios.js';
 
 // Campos del DOM
@@ -7,12 +7,15 @@ const registroUsuarios = new RegistroUsuarios();
 const verUsers = document.querySelector("#verUsers");
 
 
-
 // Campos (y los ids son sus valores)
 const campos = ['nombre', 'apellido'];
 
+//posicionar el cursor en el campo Nombre
+document.getElementById('nombre').focus();
+
 // Manejo de eventos para validar al perder el foco
 campos.forEach(id => {
+  pressEnterNextField(document.getElementById(id)); //Añadimos esto para el desplazamiento y lo mas importante, añadimos el eventDefault para que no haga submit!!!
   document.getElementById(id).addEventListener('blur', () => validateField(id));
 });
 
