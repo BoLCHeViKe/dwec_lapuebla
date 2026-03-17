@@ -1,0 +1,67 @@
+export class RegistroUsuarios {
+  constructor() {
+    this.usuarios = [];
+    this.usuarios = [{ id: 1, nombre: "aaaa", apellido: "bbbb"}, { id: 2, nombre: "aaa1", apellido: "bbb1"}]
+  }
+//Pendiente revisar USUARIOS
+  insertarUsuario(usuario) {
+    let usuarioEncontrado = this.usuarios.find((item) => item.dni === usuario.dni);
+    let correoEncontrado = this.usuarios.find(
+      (item) => item.email === usuario.email
+    );
+    if (usuarioEncontrado) {
+      throw new Error("Existe un usuario con el mismo DNI");
+    } else if (correoEncontrado) {
+      throw new Error("Existe un usuario con ese correo");
+    } else {
+      let id = 0;
+      if(this.usuarios.length !== 0) {
+        id = this.usuarios[this.usuarios.length-1].id;
+      }
+      usuario.id = ++id;
+      this.usuarios.push(usuario);
+    }
+  }
+
+  usuariosMatriculados() {
+    const personasMap = this.usuarios.map(((item, index) => {
+      return {
+        nombreCompleto: item.nombre + " " + item.apellidos,
+        edad: item.edad + " " + item.nacimiento,
+        direccionCompleta: item.direccion + "(" + item.provincia + ")." + item.telefono + " " + item.email,
+        sexo: item.sexo,
+        fechaAlta: item.alta,
+        cursoInscrito: item.curso
+      }
+    }));
+    return personasMap;
+  }
+
+  usuariosByCursos(curso) {
+    return this.usuarios.filter((usuario) => {
+      return usuario.curso === curso;
+    })
+  }
+
+  estadisticas() {
+    // Sacar los cursos existentes
+    const cursos = [];
+    this.usuarios.forEach((usuario) => {
+      if(!cursos.includes(usuario.curso)) {
+        cursos.push(usuario.curso);
+      }
+    });
+    // Sacar estadísticas
+    // Esto es pq se pierde contexto del this dentro del callback
+    let that = this;
+    const estadisticasMap = cursos.map(function (curso) {
+      return {
+        curso: curso,
+        total: that.usuariosByCursos(curso).length
+      }
+    });
+    return estadisticasMap;
+  } 
+
+
+}

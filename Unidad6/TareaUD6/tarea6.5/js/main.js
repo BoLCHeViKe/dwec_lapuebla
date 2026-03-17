@@ -1,14 +1,13 @@
 import { validateField } from './validaciones.js';
 import { getValue } from './funciones.js';
-import { RegistroAlumnos } from './Alumnos.js';
+import { RegistroUsuarios } from './Usuarios.js';
 
 // Campos del DOM
-const registroAlumnos = new RegistroAlumnos();
-const estadistica = document.querySelector("#estadistica");
-const cursos = document.querySelector("#cursos");
+const registroUsuarios = new RegistroUsuarios();
+
 
 // Campos (y los ids son sus valores)
-const campos = ['nombre', 'dni', 'email', 'curso', 'mayor'];
+const campos = ['nombre', 'apellido'];
 
 // Manejo de eventos para validar al perder el foco
 campos.forEach(id => {
@@ -31,23 +30,11 @@ document.getElementById('formulario').addEventListener('submit', e => {
   try {
     // Ejemplo de mock
     //const data = { dni: "adfdfrfeaaa", email: "bbbbasdasdas", curso: "DAW" };
-    registroAlumnos.insertarAlumno(data);
+    registroUsuarios.insertarUsuario(data);
   } catch (error) {
     console.log(error);
   }
 });
 
-estadistica.addEventListener("click", function (event) {
-  event.preventDefault();
-  // Ejemplo de confirm
-  if(confirm('¿Quieres mostrar estadística?')) {
-    console.log(registroAlumnos.estadisticas());
-  } else {
-    alert('No quiero estadísticas');
-  }  
-});
 
-cursos.addEventListener("click", function (event) {
-  event.preventDefault();
-  console.log(registroAlumnos.alumnosByCursos('DAW'));
-});
+
