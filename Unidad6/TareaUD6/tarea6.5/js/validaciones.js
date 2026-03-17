@@ -3,7 +3,7 @@ import { clearError, showError, getValue } from './funciones.js';
 // Validadores modulares
 const validators = {
   nombre: v => v ? true : 'El nombre es obligatorio',
-  apellido: v => v ? true : 'Los appellidos es obligatorio'
+  apellido: v => v ? true : 'Los apellidos es obligatorio'
 };
 
 // Validación de un campo genérico

@@ -4,6 +4,8 @@ import { RegistroUsuarios } from './Usuarios.js';
 
 // Campos del DOM
 const registroUsuarios = new RegistroUsuarios();
+const verUsers = document.querySelector("#verUsers");
+
 
 
 // Campos (y los ids son sus valores)
@@ -36,5 +38,8 @@ document.getElementById('formulario').addEventListener('submit', e => {
   }
 });
 
-
+verUsers.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log(registroUsuarios.listarUsuarios());
+});
 
