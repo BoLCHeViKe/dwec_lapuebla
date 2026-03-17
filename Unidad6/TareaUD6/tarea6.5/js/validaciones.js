@@ -10,16 +10,18 @@ const validators = {
 export function validateField(id) {
   const val = getValue(id);
   clearError(id);
-  //Para poner en rojo creamos el objeto de nuevo
+  //Para poner en rojo creamos el objeto de nuevo, aunque aumentemos el acomplamiento
   const objeto = document.querySelector(`#${id}`);
   // La validación sólo devuelve true en caso afirmativo o una cadena de caracteres
   // con el mensaje de error en caso contrario. Así podemos tener mensajes personalizados
   // para cada situación
   const result = validators[id](val);
   if (result !== true) { showError(id, result); 
-    objeto.style.border = "2px solid red"; //Imprimimos el field en rojo
+    objeto.style.border = "2px solid red"; //Imprimimos el field en rojoç
+    console.log(document.querySelector(`#error-${id}`).textContent);
     return false; 
   }
   objeto.style = "none"; // Reseteamos 
+  console.log(document.querySelector(`#error-${id}`).textContent);
   return true;
 }

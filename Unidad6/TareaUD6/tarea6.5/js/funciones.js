@@ -20,9 +20,15 @@ export function pressEnterNextField(objeto){
 
   if (event.key === "Enter") {
     event.preventDefault();//Evita submit
-    
-    //Vamos a gestionar que cambie de campo
-    const components = document.querySelectorAll(`${objeto.tagName}`);
+
+
+//SEGUIR AQUIIIIIII FALLOOOOOO
+    if(!document.querySelector(`#error-${objeto.id}`).textContent.trim()){//Comprueba si existe texto en su error, no pasa!!!
+
+
+
+
+          const components = document.querySelectorAll(`${objeto.tagName}`);
     console.log(components.length);
 
     //Esto funciona, pasa de uno a otro, aunque tengo que limitar el ultimo
@@ -39,6 +45,10 @@ export function pressEnterNextField(objeto){
       
     }
   );
+
+    };
+    //Vamos a gestionar que cambie de campo
+
 
   // const index = components.indexOf(objeto);
   // let nextIndex=index+1>=components.length?0:++index;
