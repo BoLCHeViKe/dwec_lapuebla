@@ -1,0 +1,12 @@
+- Conversiones
+- Funciones (Arrow Functions)
+- Hoisting
+- DataTypes
+- let, var, const
+- Operadores (ternario y comparadores estrictos)
+- String and Number Methods (mirar en tutorial)
+- Template Literal
+- Best Practises and Mistakes
+- Truly/Falsy
+
+Ejercicios 11,12,14,18,19,20,22,25,26,27

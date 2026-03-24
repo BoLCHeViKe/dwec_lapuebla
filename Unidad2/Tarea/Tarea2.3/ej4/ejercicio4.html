@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Ejercicio 4</title>
+</head>
+
+<body>
+  <h2>Repetimos su nombre</h2>
+
+  <label for="cadenaTexto">¿Cual es su nombre?: </label>
+	<input type="text" name="nombre" id="nombre" required/>
+	<p></p>
+  <label for="repes">¿Cuantas repeticiones quieres?: </label>
+	<input type="number" name="repes" id="repes" min="1" step="1" required/>
+  	<p></p>
+	<button type="button" value="Repetir!" onclick="repetirNombre()">Repetir nombre!</button> 
+	<p></p>
+  <p id="resultado"></p>
+</body>
+<script src="funciones.js"></script>
+
+</html>

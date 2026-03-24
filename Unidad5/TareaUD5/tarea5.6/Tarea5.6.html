@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejemplo Formularios</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>Validar Formulario Alumnos</h1>
+    <form id="miFormulario" action="" method="get">
+
+        <label for="dni">DNI:</label>
+        <input id="dni" type="text" name="dni" placeholder="00000000-A" title="Esto no parece un DNI válido" />
+        <p id="error-dni"></p> <!--Creamos este contenedor para mostrar los errores de la validación dni-->
+        <input type="text" name="nombre" id="nombre" /> Nombre<br><br>
+        <div id="error-nombre"></div>
+        <input type="text" name="direccion" id="direccion" /> Direccion<br><br>
+        <div id="error-direccion"></div>
+
+        <label for="curso">Curso:</label>
+        <select name="curso" id="curso">
+            <option value="">- Selecciona un valor -</option>
+            <option value="1">1º SMR</option>
+            <option value="2">2º SMR</option>
+        </select>
+        <div id="error-curso"></div>
+        <p></p>
+        <input type="number" name="age" id="age" /> Edad    
+        <div id="error-age"></div>
+
+        <label for="modulo">Modulos:</label>
+        <select name="modulo" id="modulo">
+            <option value="">- Selecciona un valor -</option>
+
+        </select>
+        <div id="error-modulo"></div>
+        <p></p>
+
+
+        <input type="checkbox" name="repite" id="repite" value="si" /> Repite curso<br>
+        <div id="error-repite"></div>
+                <p></p>
+        <label for="email">Email:</label>
+        <input id="email" type="text" name="email" size="40" placeholder="ejemplo@hola.com" />
+        <div id="error-email"></div>
+
+        <p></p>
+        <label for="fechaNac">Fecha de Nacimiento:</label>
+        <input id="fechaNac" type="text" name="fechaNac" />
+        <div id="error-fechaNac"></div>
+        <p></p>
+        <button type="button" id="matriculados">Alumnos Matriculados</button>
+        <button type="button" id="alum1SMR">Alumnos 1º SMR</button>
+        <button type="button" id="alumMayor">Alumno Mayor</button>
+        <p></p>
+        <button type="button" id="clear">Limpiar Formulario</button>
+        <p></p>
+        <input type="submit" name="env" value="Grabar" />
+        <div id="error-miFormulario"></div>
+
+    </form>
+</body>
+    <script type="text/javascript" src="js/RegistroAlumnos.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
+    <script type="text/javascript" src="js/validaciones.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script> 
+</html>

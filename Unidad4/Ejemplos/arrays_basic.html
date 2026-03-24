@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+
+<body>
+    <h1>Arrays</h1>
+</body>
+<script>
+    // Pero lo normal es declararlo const para no sobreescribirlo
+    let numbers = [1,2,3,4,5];
+    let reverseNumbers = [];
+    for (let index = 0; index < numbers.length; index++) {
+        const element = numbers[numbers.length-index-1];
+        reverseNumbers.push(element)
+    }
+    console.log(numbers.join(","));
+    console.log(reverseNumbers.join(","));
+
+    numbers.pop();
+
+    console.log(numbers.join(","));
+
+    numbers.push(6);
+
+    console.log(numbers.join(","));
+
+    numbers.splice(2,1);
+
+    console.log(numbers.join(","));
+
+    const concatArray = numbers.concat(reverseNumbers);
+
+    console.log(numbers.join(","));
+    console.log(concatArray.join(","));
+
+    concatArray.sort((a,b) => b-a);
+    console.log(concatArray.join(","));
+
+</script>
+
+</html>

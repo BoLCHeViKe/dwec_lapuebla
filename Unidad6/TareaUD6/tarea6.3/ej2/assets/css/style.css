@@ -1,0 +1,32 @@
+/*Estilos en clases de tamaño de letra*/
+.fontSizeXXS {
+  font-size: 0.55em;
+}
+.fontSizeXS {
+  font-size: 0.7em;
+}
+.fontSizeS {
+  font-size: 0.85em;
+}
+.fontSizeM {
+  font-size: 1em;
+}
+.fontSizeL {
+  font-size: 1.15em;
+}
+.fontSizeXL {
+  font-size: 1.30em;
+}
+.fontSizeXXL {
+  font-size: 1.45em;
+}
+/*Estilos en clases de colores en fonts*/
+.fontColorGreen {
+  color: green;
+}
+.fontColorRed {
+  color: red;
+}
+.fontColorBlue {
+  color: blue;
+}

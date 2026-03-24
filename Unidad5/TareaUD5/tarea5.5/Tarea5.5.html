@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Validación con HTML5</title>
+    <meta name="author" content="Ángel Berasuainr" />
+</head>
+
+<body>
+    <h1>Validar DNI</h1>
+    <div>
+        <form id="miFormulario" action="validacionOK.html" method="get">
+            <legend>Validación de DNI</legend>
+            <p></p>
+
+            <label for="dni">DNI:</label>
+            <input id="dni" type="text" name="dni" placeholder="00000000-A" title="Esto no parece un DNI válido" />
+            <p id="error-dni"></p> <!--Creamos este contenedor para mostrar los errores de la validación dni-->
+
+            <button type="submit">Validar</button>
+        </form>
+    </div>
+
+    <br /><br />
+
+    <script type="text/javascript">
+        const dni = document.querySelector("#dni");
+        const miFormulario = document.querySelector("#miFormulario");
+        //b)	Nada más mostrar la pantalla, debe posicionar el foco en el campo.
+        dni.focus();
+
+    //**********FUNCIONES DE COMPROBACION***************** 
+
+        //c)	Al pulsar Validar o al perder el foco, ejecutar una función que compruebe si es o no correcto, dando el mensaje oportuno.
+        //d)	El formato del DNI debe ser 12345678-X, y para validarlo vamos a utilizar expresiones regulares, pero desde JS.
+        function checkDNI(objeto) {
+            const error = document.querySelector('#error-' + objeto.id);
+            //1. Comprobación obligatoriedad (No vacio)
+            if (objeto.value.trim() === "") {
+                error.innerHTML = `No puede dejar el campo ${objeto.name.toUpperCase()} vacio`;
+                error.style.color = "red";
+                dni.focus();
+                return false;
+            }
+            // e)	Si no introduce la letra, calcularla e incluirla
+            if (/^[0-9]{8}-$/.test(objeto.value)) {
+                let numbers = parseInt(objeto.value.substring(0, 8));
+                objeto.value += calcLetraDNI(numbers);
+            }
+            //2. Comprobación sintaxica (RegEx)
+            if (!/^[0-9]{8}-[a-zA-Z]$/.test(objeto.value)) { //2. Comprobación sintaxica (RegEx)
+                error.innerHTML = `Formato incorrecto (Esperado: 00000000-X)`;
+                error.style.color = "red";
+                dni.focus();
+                return false;
+            }
+            //3. Comprobación semantica (lógica)
+            let numbers = parseInt(objeto.value.substring(0, 8));
+            let letter = objeto.value.substring(9, 10).toUpperCase();
+            if (letter !== calcLetraDNI(numbers)) {
+                //objeto.style.border = "2px solid red"; 
+                error.innerHTML = `Letra incorrecta, ¿Podría ser la ${calcLetraDNI(numbers)}?`;
+                error.style.color = "red";
+                dni.focus();
+                return false;
+            } else {
+                error.style = "none"; //Para resetear estilo del error!!!!
+                error.innerHTML = "DNI correcto";//Nos pide que mostremos mensaje oportuno, pero tambien podemos dejarlo en blanco
+                return true;
+            }
+
+            if (letter === calcLetraDNI(numbers)) {
+                return true;
+            } else {
+                error.innerHTML = `Letra incorrecta, ¿Podría ser la ${calcLetraDNI(numbers)}?`;
+                return false;
+            }
+        }
+
+        function calcLetraDNI(numbers) {
+            const lettersDni = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E", "T"];
+            numbers = parseInt(numbers); //Hacemos un parseInt por si acaso vienen como String
+            if (numbers < 100000000) {
+                return lettersDni[numbers % 23];//El op. modulo nos da la posición del array
+            }
+            return "";
+        }
+
+    //************EVENTOS*****************
+
+
+        dni.addEventListener('blur', function () {
+            checkDNI(this);
+        });
+
+        miFormulario.addEventListener('submit', function (event) { //Ojooo, aplicar al formulario
+            //Anulamos la carga de la pagina del event 'submit'
+            event.preventDefault(); //Tambien te lo puedes llevar a else!! en caso de error
+            if (checkDNI(dni)) {//Invocamos a la función (Realiza su función, al igual que "blur" pero ademas nos sirve para validar el formulario)
+                //Avisamos de que el formulario esta validado
+                alert(`¡Formulario de DNI validado!, procedemos a cargar la página de éxito`);
+                //Devolver función correcta del submit y llevar a la página (trasladado por nuestro profesor Ángel)
+                window.location = "./validacionOK.html"; //Mejor forzarla a mano
+                //Es la única función que hemos encontrado para redirigirnos a la dirección del action del formulario (no hemos conseguido encontrar nada que "anule" la prevención aplicada del comportamiento default del evento y poder restaurarlo a su comportamiento normal :())
+            }
+        });
+    </script>
+</body>
+
+</html>

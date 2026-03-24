@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>Eventos</title>
+</head>
+
+<body>
+    <a href="pagina.html" id="mienlace" onClick="alertar(this)">Pulsa aquí</a>
+
+    Su equivalente en el <strong>modelo tradicional</strong> sería:
+    <a id="mienlace2" href="pagina2.html">Pulsa aqui</a>
+
+</body>
+
+<script type="text/javascript">
+    // Modelo en línea
+    function alertar(objeto) {
+        alert("Te conectaremos con la página: " + objeto.href);
+    }
+
+    // Modelo de registro tradicional
+    document.getElementById("mienlace2").onclick = alertar2;
+
+    function alertar2() {
+        alert("Te conectaremos con la página: " + this.href);
+    }
+</script>
+
+</html>

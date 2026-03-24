@@ -1,0 +1,21 @@
+{
+  "name": "patrones-solid-ts",
+  "version": "1.0.0",
+  "scripts": {
+    "factory": "npx ts-node src/patterns/Factory.ts",
+    "singleton": "npx ts-node src/patterns/Singleton.ts",
+    "strategy": "npx ts-node src/patterns/Strategy.ts",
+    "observer": "npx ts-node src/patterns/Observer.ts",
+    "decorator": "npx ts-node src/patterns/Decorator.ts",
+    "srp": "npx ts-node src/solid/SRP.ts",
+    "ocp": "npx ts-node src/solid/OCP.ts",
+    "lsp": "npx ts-node src/solid/LSP.ts",
+    "isp": "npx ts-node src/solid/ISP.ts",
+    "dip": "npx ts-node src/solid/DIP.ts",
+    "exercise": "npx ts-node src/Exercise/Exercise.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.1"
+  }
+}

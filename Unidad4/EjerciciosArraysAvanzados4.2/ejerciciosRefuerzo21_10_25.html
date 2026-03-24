@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+</head>
+<body>
+<script>
+
+//Dispones de un array de objetos que representa un inventario de videojuegos de una tienda. Cada objeto tiene la siguiente estructura:
+const juegos = [
+  { id: 1, titulo: "The Legend of Zelda: Breath of the Wild", genero: "Aventura", plataforma: "Switch", precio: 59.99, stock: 12, puntuacion: 9.8 },
+  { id: 2, titulo: "God of War", genero: "Acción", plataforma: "PS5", precio: 69.99, stock: 5, puntuacion: 9.5 },
+  { id: 3, titulo: "Elden Ring", genero: "Rol", plataforma: "PC", precio: 49.99, stock: 8, puntuacion: 9.3 },
+  { id: 4, titulo: "Mario Kart 8 Deluxe", genero: "Carreras", plataforma: "Switch", precio: 59.99, stock: 20, puntuacion: 8.9 },
+  { id: 5, titulo: "Hollow Knight", genero: "Metroidvania", plataforma: "PC", precio: 14.99, stock: 0, puntuacion: 9.0 },
+  { id: 6, titulo: "Spider-Man 2", genero: "Acción", plataforma: "PS5", precio: 79.99, stock: 7, puntuacion: 8.7 }
+];
+
+
+//1. Filtrar por género
+//Crea una función que devuelva todos los juegos de un género indicado por el usuario (por ejemplo, “Acción”).
+let generoUser= prompt("Introduce genero a buscar");
+const juegosGenFilt = juegos.filter((element)=> element.genero==generoUser);
+
+console.log(juegosGenFilt);
+
+//2. Obtener títulos disponibles
+//Genera un array con solo los títulos de los juegos que tienen stock mayor que 0.
+const juegosStockFilt = juegos.filter((item)=>item.stock>0).map((item)=>item.titulo);
+
+console.log(juegosStockFilt);
+
+// 3. Buscar juego por título
+// Crea una función que reciba un nombre parcial (por ejemplo “Mario”) y devuelva el primer juego que contenga ese texto en el título.
+let nombreUser= prompt("Introduce nombre a buscar");
+const juegoNombre= juegos.find((item)=>item.titulo.includes(nombreUser));
+    //Podriamos afinar que, en caso de que devolviese varios objetos (no es este caso puesto que find se queda con el primero), podríamos hacerle un sort y despues un splice (0,1)
+console.log(juegoNombre);
+// 4. Calcular el valor total del inventario
+//Calcula y muestra por consola la suma total del valor en euros de todo el stock (precio × stock por juego).
+let sumaTotal = juegos.reduce((totalInventario,item)=>totalInventario+(item.precio*item.stock),0);
+console.log("Suma total inventario "+sumaTotal);
+//Total inventario por consola
+let nombrePlataformUser= prompt("Introduce plataforma a buscar y calcular total: ");
+const filtradoPorPlataform= juegos.filter((item)=>item.plataforma.includes(nombrePlataformUser)); //Duda, to lowerkeys?
+let juegoPriceTotalPlataform = filtradoPorPlataform.reduce((totalPlataform,item)=>totalPlataform+(item.precio*item.stock),0);
+console.log(`Suma total por consola ${nombrePlataformUser} es: ${juegoPriceTotalPlataform.toFixed(2)}`);
+
+//5. Comprobar si hay juegos agotados
+//Devuelve true o false si existe al menos un juego con stock === 0.
+let checkStockGames = juegos.some((item)=>item.stock==0);
+console.log(checkStockGames);
+
+//6. Ordenar por puntuación
+//Crea un nuevo array ordenado de mayor a menor puntuación.
+juegos.sort((a,b)=>b.puntuacion-a.puntuacion);
+console.log(juegos);
+
+//7. (Opcional – Ampliación) Precio medio por plataforma
+//Calcula el precio medio de los juegos por plataforma (Switch, PS5, PC).
+// function avgPricePlataform (plataformInput){
+//   const juegosFiltPlat = juegos.filter((item)=>item.plataforma.includes(plataformInput));
+//   let totalPricePlat=juegosFiltPlat.reduce((totalPrice,item)=>totalPrice+item.precio,0);
+//   return (totalPricePlat/juegosFiltPlat.length).toFixed(2);
+// };
+// console.log(`El precio medio en Switch es de ${avgPricePlataform("Switch")} Eur`);
+// console.log(`El precio medio en PS5 es de ${avgPricePlataform("PS5")} Eur`);
+// console.log(`El precio medio en PC es de ${avgPricePlataform("PC")} Eur`);
+//8. (Opcional – Ampliación) Descuenta un 10% el precio de aquellos videojuegos que tengan mas de 10 unidades.
+console.log("Juegos sin descuento")
+console.log(`Juego ${juegos[0].titulo} vale ${juegos[0].precio}`);
+console.log(`Juego ${juegos[1].titulo} vale ${juegos[1].precio}`);
+juegos.filter((element)=>{
+  return element.stock>10;
+}).map((item)=>{
+  item.precio*=0.9;
+});
+console.log("Tras aplicar regla (10% descuento si tiene mas de 10 unidades)")
+console.log(juegos);
+console.log(`Juego ${juegos[0].titulo} vale ${juegos[0].precio}`);
+console.log(`Juego ${juegos[1].titulo} vale ${juegos[1].precio}`);
+
+
+</script>
+</body>
+</html>

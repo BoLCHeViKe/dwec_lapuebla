@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejemplo Formularios</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>Validar Formulario desde JS</h1>
+    <form id="miFormulario" action="" method="get" onsubmit="return validar(this)">
+        <input type="text" name="usuario" id="usuario" /> Usuario<br><br>
+        <div id="error-usuario"></div>
+        <input type="password" name="passwd" id="passwd" /> Contraseña
+        <div id="error-passwd"></div>
+        <p>AFILIADO</p>
+
+        <input type="radio" name="afiliado" value="si" /> SI<br>
+        <input type="radio" name="afiliado" value="no" /> NO<br>
+        <div id="error-afiliado"></div>
+        <p></p>
+        <select name="opciones" id="opciones">
+            <option value="">- Selecciona un valor -</option>
+            <option value="1">Primer valor</option>
+            <option value="2">Segundo valor</option>
+            <option value="3">Tercer valor</option>
+        </select>
+        <div id="error-opciones"></div>
+        <p> Marca al menos dos opciones:
+        <p>
+            <input type="checkbox" name="c1" id="c1" value="C1" /> OP1<br>
+            <input type="checkbox" name="c2" id="c2" value="C2" /> OP2<br>
+            <input type="checkbox" name="c3" id="c3" value="C3" /> OP3
+        <div id="error-c1"></div>
+        <p></p>
+        <input type="submit" name="env" value="Enviar" />
+    </form>
+
+    <script type="text/javascript">
+        //*****FORM****/
+        const miFormulario = document.querySelector("miFormulario");
+        //*****INPUT****/
+        const usuario = document.querySelector("#usuario");
+        const passwd = document.querySelector("#passwd");
+        //*****RADIO****/
+        const afiliado = document.getElementsByName('afiliado'); //"Array-HTMLCollection"
+        //For para recorrerlo
+        //afiliado[i].value     //afiliado[i].checked
+        //*****SELECT****/
+        const opciones = document.getElementById('opciones'); //"Array-HTMLCollection" - se selecciona en el array con .selectedIndex
+        //opciones.options[opciones.selectedIndex].value o .text
+        //*****CHECKBOX****/
+        const checkboxC = [document.getElementById("c1"), document.getElementById("c2"), document.getElementById("c3")]; //Hemos preferido contenerlo como un "Array", utilización .checked (es un boolean, podemos settearlo o gettearlo)
+
+
+        //a)    Al entrar en la web, el foco debe estar posicionado en el campo Usuario.
+        usuario.focus();
+
+        //b)	Todos los campos son obligatorios, y si error, dar el mensaje correspondiente y no permita el envío.
+
+        //*****CHECK INPUT****/
+        function checkRequiredInput(objeto) {
+            const error = document.querySelector('#error-' + objeto.id);
+            if (!objeto.value.trim()) {
+                objeto.style.border = "2px solid red";
+                error.style.color = "red";
+                error.innerHTML = `Debe completar el campo ${objeto.name}`;
+                objeto.focus(); //Si quieroo que el primero que de error, se pued
+                return false; //No pasa la validacion 
+            } else {
+                objeto.style = "none"; //Para resetear estilo!!!!
+                error.innerHTML = "";
+                return true; //Pasa validacion
+            }
+        }
+
+        //*****CHECK RADIO****/
+        function checkRequiredRadio(arrayRadio) { //Y asi reutilizamos la función de validación
+            const error = document.querySelector('#error-' + arrayRadio[0].name);
+            for (let i = 0; i < arrayRadio.length; i++) {
+                if (arrayRadio[i].checked) {
+                    error.style = "none"; //Para resetear estilo!!!!
+                    error.innerHTML = "";
+                    return true;
+                }
+                error.style.color = "red";
+                error.innerHTML = `Debe completar el campo ${arrayRadio[0].name}`;
+                //arrayRadio[0].focus();  //No se le haria focus así
+                //arrayRadio[0].checked = true;//Focus así: Pero no queremos ponerlo pues el radio se señalaria solo
+                return false;
+            }
+        }
+
+        //*****CHECK SELECT****/
+        function checkRequiredSelect(arraySelect) {
+            const error = document.querySelector('#error-' + arraySelect.id);
+            if (!arraySelect.options[arraySelect.selectedIndex].value.trim()) {
+                arraySelect.style.border = "2px solid red";
+                error.style.color = "red";
+                error.innerHTML = `Debe completar el campo ${arraySelect.name}`;
+                //objeto.focus(); //No puedo hacer focus, se rompe
+                return false; //No pasa la validacion 
+            } else {
+                arraySelect.style = "none";
+                error.style = "none"; //Para resetear estilo!!!!
+                error.innerHTML = "";
+                return true; //Pasa validacion
+            }
+        }
+
+        //*****CHECK CHECKBOX****/
+        function checkRequiredCheckBox(arrayCheckBox, numCheckReq) {
+            const error = document.querySelector('#error-' + arrayCheckBox[0].name);
+            let contador = 0;
+            for (let i = 0; i < arrayCheckBox.length; i++) {
+                if (arrayCheckBox[i].checked) {
+                    contador++;
+                }
+            }
+            if (numCheckReq != contador) {
+                error.style.color = "red";
+                error.innerHTML = numCheckReq > contador ? `Debes marcar ${numCheckReq - contador} casilla/s mas!` : `Debes marcar ${contador - numCheckReq} casilla/s menos!`;
+                //objeto.focus(); //No puedo hacer focus, se rompe
+                return false; //No pasa la validacion 
+            } else {
+                error.style = "none"; //Para resetear estilo!!!!
+                error.innerHTML = "";
+                return true; //Pasa validacion
+            }
+        }
+
+
+
+        //*****VALIDACION FORMULARIO****/
+        function validar(form) {
+            if (checkRequiredInput(usuario) & checkRequiredInput(passwd) & checkRequiredRadio(afiliado) & checkRequiredSelect(opciones) & checkRequiredCheckBox(checkboxC, 2)) { //Solo un & para que realice todas las comprobaciones y muestre todos los errores SIN CORTOCIRCUITO &&
+                alert("Formulario CORRECTO!!!");
+                jsonObject();
+                setTimeout(()=> {window.location="./validacionOK.html";}, 12000);
+                alert("Creamos el objeto y lo mostramos en console.log... en 12 segundos cargará la página de exito"); //Hemos visto que la ejecucción de código no se para con el setTimeout, es decir, el setTimeout hace una llamada "asincrona" a su callback, indiferentemente por donde vaya la ejecucción del script
+                //return true; //Hace que rediccione la página!!!
+                
+            } else {
+                alert("INCORRECTO formulario");
+            }
+            return false; //Necesario para no rediccionar la página!!
+        }
+        function jsonObject() {
+            const json = {
+                usuario: usuario.value,
+                passwd: passwd.value,
+                afiliado: getValueRadio(afiliado), //Utilizando hoisting
+                opciones: opciones.options[opciones.selectedIndex].value,
+                checkboxSelected: getValuesCheckBox(checkboxC) //Utilizando hoisting
+
+            }
+
+            console.log(json);
+        }
+
+        //*****Select RADIO Value****/        
+        function getValueRadio(arrayRadio) { //Y asi reutilizamos la función de validación
+            for (let i = 0; i < arrayRadio.length; i++) {
+                if (arrayRadio[i].checked) {
+                    return arrayRadio[i].value;
+                }
+            }
+        }
+
+        //*****Selected CHECKBOXs values en Array****/
+        function getValuesCheckBox(arrayCheckBox) { //Devuelve en array los valores 
+            const newArray=[];
+            for (let i = 0; i < arrayCheckBox.length; i++) {
+                if (arrayCheckBox[i].checked) {
+                    newArray.push(arrayCheckBox[i].value);
+                }
+            }
+            return newArray;
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

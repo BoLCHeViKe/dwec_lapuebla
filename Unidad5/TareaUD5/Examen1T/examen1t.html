@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Validar Socios</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>Programa alta socios</h1>
+    <form id="miFormulario" action="" method="get">
+
+        <label for="dni">DNI:</label>
+        <input id="dni" type="text" name="dni" placeholder="00000000-A" />
+        <p id="error-dni"></p> <!--Creamos este contenedor para mostrar los errores de la validación dni-->
+        <input type="text" name="nombre" id="nombre" /> Nombre<br><br>
+        <div id="error-nombre"></div>
+        <input type="text" name="apellidos" id="apellidos" /> Apellidos<br><br>
+        <div id="error-apellidos"></div>
+        <input type="text" name="direccion" id="direccion" /> Direccion<br><br>
+        <div id="error-direccion"></div>
+        <label for="email">Email:</label>
+        <input id="email" type="text" name="email" size="40" placeholder="ejemplo@hola.com" />
+        <div id="error-email"></div>
+        <input type="radio" name="sexo" value="hombre" /> Hombre<br>
+        <input type="radio" name="sexo" value="mujer" /> Mujer<br>
+        <div id="error-sexo"></div>  
+
+        <input type="text" name="telefono" id="telefono" /> telefono<br><br>
+        <div id="error-telefono"></div>
+        
+        <label for="fechaAlta">Fecha de Alta:</label>
+        <input id="fechaAlta" type="date" name="fechaAlta" />
+        <div id="error-fechaAlta"></div>
+        <p></p>
+
+        <label for="provincia">Provincia:</label>
+        <select name="provincia" id="provincia">
+            <option value="">- Selecciona un valor -</option>
+            <option value="1">Almeria</option>
+            <option value="2">Granada</option>
+            <option value="3">Sevilla</option>
+        </select>
+        <div id="error-provincia"></div>
+        <p></p>
+
+        <label for="fechaNac">Fecha de Nacimiento:</label>
+        <input id="fechaNac" type="date" name="fechaNac" />
+        <div id="error-fechaNac"></div>
+
+        <p></p>
+        <input type="number" name="age" id="age" disabled/> Edad    
+        <div id="error-age"></div>
+          
+
+
+        <label for="deporte">Deporte:</label>
+        <select name="deporte" id="deporte">
+            <option value="">- Selecciona un valor -</option>
+        </select>
+        <div id="error-deporte"></div>
+        <p></p>
+
+        <button type="button" id="sociosInscritos">Socios Inscritos</button>
+        <button type="button" id="sociosDeporte">Socios por deporte</button>
+        <button type="button" id="socioMayor">Socio Mayor</button>
+        <p></p>
+        <button type="button" id="clear">Limpiar Formulario</button>
+        <p></p>
+        <input type="submit" name="env" value="Grabar" />
+        <div id="error-miFormulario"></div>
+
+    </form>
+</body>
+    <script type="text/javascript" src="js/Gimnasio.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
+    <script type="text/javascript" src="js/validaciones.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script> 
+</html>

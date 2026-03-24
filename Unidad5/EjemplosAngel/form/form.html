@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset en form</title>
+</head>
+
+<body>
+    <form action="buscar.php" name="elFormulario" id="miFormulario" method="post">
+        <p>
+            <label for="busqueda">Buscar por:</label>
+            <input id="busqueda" name="busqueda" type="text" value="paco">
+            <input id="otro" name="otro" type="text" value="otro">
+            <input id="submit" type="submit" value="Buscar">
+        </p>
+    </form>
+</body>
+<script>
+    var miFormulario = document.getElementById("miFormulario");
+    // guardamos la referencia del formulario en una variable.
+    for (var i = 0; i < miFormulario.elements.length; i++) {
+        if (miFormulario.elements[i].type == "text") {
+            miFormulario.elements[i].value = "";
+        }
+    }
+</script>
+
+</html>

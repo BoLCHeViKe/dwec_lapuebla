@@ -1,0 +1,20 @@
+/*Estilos en clases para aplicar en classList*/
+.rectangle {
+  display: flex; /*Visto en diseño*/
+  height: 100px;
+  width: 200px;
+  text-align: center; /*Propiedad normal*/
+  align-items: center; /*Propiedad flex*/
+  justify-content: center; /*Propiedad flex*/
+
+}
+
+.bcOrange {
+  background-color: orange;
+}
+.bcGold {
+  background-color: gold;
+}
+.bcPink {
+  background-color: Pink;
+}

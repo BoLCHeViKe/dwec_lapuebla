@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Objeto FORM DOM</title>
+    <script type="text/javascript">
+        function marcar() {
+            document.getElementById("verano").checked = true;
+        }
+        function desmarcar() {
+            document.getElementById("verano").checked = false;
+        }
+        function procesar() {
+            // Como coger correctamente el valor de un checked
+            if(document.getElementById("verano").checked) {
+                console.log(document.getElementById("verano").value);
+            } else {
+                console.log('No se ha checkeado');
+            }            
+            // Para que no refresque la página
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <form action="" method="get" onsubmit="return procesar()">
+        <input type="checkbox" id="verano" name="verano" value="Si" />¿Te gusta el verano?
+        <input type="submit" />
+    </form>
+    <button onclick="marcar()">Marcar Checkbox</button>
+    <button onclick="desmarcar()">Desmarcar Checkbox</button>
+</body>
+
+</html>
