@@ -1,7 +1,0 @@
-- Callbacks
-- Mutabilidad e inmutabilidad
-- Array Methods
-- Objetos Literales
-- Más conceptos sobre objetos
-- Prototipos
-- Clases, herencia, static, ámbito de atributos
