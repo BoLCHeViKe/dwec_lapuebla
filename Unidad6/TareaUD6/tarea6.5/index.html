@@ -3,19 +3,31 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Formulario Vanilla Escalable</title>
+  <title>Formulario Lista dinamica</title>
 </head>
 
 <body>
-  <h1>Lista dinamica</h1>
+  <h1>Introducir datos</h1>
   <form id="formulario">
     <label>Nombre:<input type="text" id="nombre" /></label>
     <div id="error-nombre"></div>
     <label>Apellidos:<input type="text" id="apellido" /></label>
     <div id="error-apellido"></div>
     <button type="submit">Añadir</button>
-    <button type="button" id="verUsers" value="verUsers">Ver Usuarios</button>
+    <button type="button" id="verUsers" value="verUsers">Ver Usuarios por Consola</button>
   </form>
+  <h1>Lista de datos</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>¿Eliminar?</th>
+      </tr>
+    </thead>
+    <tbody id="tablaDatosBody"></tbody>
+  </table>
+  
   <script type="module" src="./js/funciones.js"></script>
   <script type="module" src="./js/validaciones.js"></script>
   <script type="module" src="./js/main.js"></script>

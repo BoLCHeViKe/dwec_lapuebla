@@ -1,7 +1,7 @@
 export class RegistroUsuarios {
   constructor() {
     this.usuarios = [];
-    this.usuarios = [{ id: 1, nombre: "aaaa", apellido: "bbbb"}, { id: 2, nombre: "aaa1", apellido: "bbb1"}]
+    this.usuarios = [{ id: 1, nombre: "Julio", apellido: "Fernandez"}, { id: 2, nombre: "Jose Luis", apellido: "Rodriguez"}]
   }
 //Pendiente revisar USUARIOS
   insertarUsuario(usuario) {
@@ -22,7 +22,17 @@ export class RegistroUsuarios {
       usuario = {id: usuario.id, nombre: usuario.nombre, apellido: usuario.apellido}; //Forzamos mantener el order id/nombre/apellido
       this.usuarios.push(usuario);
     // }
+
+    
   }
+//Creamos el meotodo borrar
+borrarUsuario(usuario) {
+  // Primero creamos una neuva lista de usuarios sin tener en cuenta el usuario dado
+  const nuevaListaUsuarios = this.usuarios.filter(item => item.id !== usuario.id);
+  //Y finalmente lo seteamos a la nueva lista de nuestra instanciacion
+  this.usuarios = nuevaListaUsuarios;
+}
+
 
   // usuariosMatriculados() {
   //   const personasMap = this.usuarios.map(((item, index) => {
