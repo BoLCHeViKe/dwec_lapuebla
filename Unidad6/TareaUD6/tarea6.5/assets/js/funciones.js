@@ -52,11 +52,15 @@ function addFila(tablaBodyDestino, objeto, registroUsuarios){
   const botonEliminar = document.createElement('button');
   botonEliminar.textContent = 'X';
   //3.1. Creamos aqui el evento del boton eliminar (aunque estamos "acoplando..." pero la sencillez de tenerlo aquí es mucho mejor):
+  // 2. Agregamos la clase deseada
+  botonEliminar.classList.add('botonEliminar'); //Le damos la clase aqui para que el boton tenga formato en el css
   botonEliminar.addEventListener('click', () => {
-    // Eliminar el usuario del RegistroUsuarios (del Usuarios.js)
-    registroUsuarios.borrarUsuario(objeto);
-    // Volver a pintar la tabla para reflejar los cambios
-    pintarInteriorTabla(tablaBodyDestino, registroUsuarios); //Volvemos a pintar la tabla cada vez que se utiliza este evento, es decir, que se elimina un usuario
+    if (confirm(`¿Estás seguro de eliminar a ${objeto.nombre} ${objeto.apellido}?`)) {//Utilizamos en confirm basico para confirmar y no complicarnos
+      // Eliminar el usuario del RegistroUsuarios (del Usuarios.js)
+      registroUsuarios.borrarUsuario(objeto);
+      // Volver a pintar la tabla para reflejar los cambios
+      pintarInteriorTabla(tablaBodyDestino, registroUsuarios);
+    }
   });
   //3.2. Y ya enganchamos el boton con su evento a la celda creada
   celdaEliminar.appendChild(botonEliminar);

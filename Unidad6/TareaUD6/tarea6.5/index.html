@@ -4,33 +4,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Formulario Lista dinamica</title>
+  <link href="./assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-  <h1>Introducir datos</h1>
-  <form id="formulario">
-    <label>Nombre:<input type="text" id="nombre" /></label>
-    <div id="error-nombre"></div>
-    <label>Apellidos:<input type="text" id="apellido" /></label>
-    <div id="error-apellido"></div>
-    <button type="submit">Añadir</button>
-    <button type="button" id="verUsers" value="verUsers">Ver Usuarios por Consola</button>
-  </form>
-  <h1>Lista de datos</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>¿Eliminar?</th>
-      </tr>
-    </thead>
-    <tbody id="tablaDatosBody"></tbody>
-  </table>
+  <h1>Lista dinámica</h1>
+  <div class="pagina">
+    <div class="datos">
+      <h2>Introducir datos</h2>
+      <form id="formulario">
+        <label>Nombre*<input type="text" id="nombre" placeholder="Introduzca el nombre" /></label>
+        <div id="error-nombre"></div>
+        <label>Apellidos*<input type="text" id="apellido" placeholder="Introduzca los apellidos" /></label>
+        <div id="error-apellido"></div>
+        <button type="submit">Añadir</button>
+        <button type="button" id="verUsers" value="verUsers">Ver Usuarios por Consola</button>
+      </form>
+    </div>
+    <div class="datos">
+      <h2>Lista de datos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tablaDatosBody"></tbody>
+      </table>
+    </div>
+  </div>
   
-  <script type="module" src="./js/funciones.js"></script>
-  <script type="module" src="./js/validaciones.js"></script>
-  <script type="module" src="./js/main.js"></script>
+  <script type="module" src="./assets/js/funciones.js"></script>
+  <script type="module" src="./assets/js/validaciones.js"></script>
+  <script type="module" src="./assets/js/main.js"></script>
 </body>
 
 </html>

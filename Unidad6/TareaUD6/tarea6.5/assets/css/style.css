@@ -1,0 +1,105 @@
+/* Reset de márgenes y paddings */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* Estilo general y utilidades */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* los dos paneles en fila */
+.pagina {
+    display: flex;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* cada panel */
+.datos {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    flex: 1;
+}
+
+.datos h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* etiquetas del formulario */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* boton añadir */
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto 0;
+}
+
+/* boton ver usuarios */
+#verUsers {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 8px auto 0;
+}
+
+/* tabla de datos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f8f8f8;
+}
+
+/* boton de eliminar fila */
+.botonEliminar {
+    background-color: #f8d7da;
+    color: #c00;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 2px 8px;
+}
