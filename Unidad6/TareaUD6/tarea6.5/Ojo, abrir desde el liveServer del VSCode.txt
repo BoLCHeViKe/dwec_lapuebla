@@ -1,0 +1,3 @@
+Si se abre directamente el html no funciona porque no consigue cargar el Usuario.js (por seguridad???)
+
+Sin embargo, desde el LiveServer del VSCode funciona perfectamente
